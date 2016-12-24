@@ -47,7 +47,6 @@ class LinearRegressionWithoutUrl:
             matrix[size-1, index] = request.payload_size
             index += 1
             log.info('action=filling-matrix status=end')
-        print(matrix)
         return matrix, labels
 
     def _distinct(self, requests, function):
