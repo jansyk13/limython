@@ -10,6 +10,8 @@ import processors.best_counter_processor
 import sys
 import time
 
+import learning.ols_indicators_without_url as regression
+
 log.basicConfig(stream=sys.stdout, level=log.DEBUG, format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
 
 def select_data(args):
@@ -46,16 +48,19 @@ def process_args():
 
 def main_wrapper():
     args = process_args()
-    processor = select_processor(args)
+    # processor = select_processor(args)
     data = generator.Generator(cursor=db.get_cursor(), table=select_data(args), limit=30000, offset=1000)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
-        log.info('action=processing status=start')
-        start_time = time.time()
-        executor.map(processor.process, data)
-    counters_sum = sum(processor.node_counters)
-    utilization = [c*int(args.node_count)/counters_sum for c in processor.node_counters]
-    log.info('action=processing status=end time=%s' % (time.time() - start_time))
-    log.info('action=counters data=\'%s\' utilization=\'%s\' sum=%d' % (processor.node_counters, utilization, counters_sum))
+    # with concurrent.futures.ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
+    #     log.info('action=processing status=start')
+    #     start_time = time.time()
+    #     executor.map(processor.process, data)
+    # counters_sum = sum(processor.node_counters)
+    # utilization = [c*int(args.node_count)/counters_sum for c in processor.node_counters]
+    # log.info('action=processing status=end time=%s' % (time.time() - start_time))
+    # log.info('action=counters data=\'%s\' utilization=\'%s\' sum=%d' % (processor.node_counters, utilization, counters_sum))
+    learning = regression.LinearRegressionWithoutUrl()
+    learning.learn(data)
+    log.info('%s' % learning.ws)
 
 def main():
     try:

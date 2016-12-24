@@ -15,5 +15,6 @@ setup(name='limython',
       install_requires=[
         'mysqlclient==1.3.9',
         'configparser==3.5.0',
+        'numpy==1.11.3',
       ]
      )

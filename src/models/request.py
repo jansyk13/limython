@@ -2,7 +2,7 @@
 class Request:
     def __init__(self, id, source, time_stamp, method, url, protocol, status, payload_size):
         self.id = id
-        self.source = url
+        self.source = source
         self.time_stamp = time_stamp
         self.method = method
         self.url = url
