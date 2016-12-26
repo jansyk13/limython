@@ -61,6 +61,7 @@ def main_wrapper():
     learning = regression.LinearRegressionWithoutUrl()
     learning.learn(data)
     log.info('%s' % learning.ws)
+    print(ws)
 
 def main():
     try:
