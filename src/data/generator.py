@@ -1,6 +1,4 @@
 from models.request import Request
-import gc
-import logging as log
 
 class Generator:
     def __init__(self, cursor, table, offset, limit):
@@ -20,13 +18,7 @@ class Generator:
                 # no more records
                 break
             for row in self.cursor.fetchall():
-                # passing value + lazy transformation
                 yield Request(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7])
-            # forcing garbage collectin to avoid problems with memory
-            # maybe full GC is not necessary
-            # could be rewritten using raw python memory interface (malloc + free)
-            gc.collect()
-            log.info('action=gc-called')
             # over limit -> end
             if _id > self.limit: break
             # next

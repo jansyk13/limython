@@ -10,7 +10,10 @@ import processors.best_counter_processor
 import sys
 import time
 
-import learning.ols_indicators_without_url as regression
+import learning.linear_regression as regression
+
+import numpy as np
+np.set_printoptions(threshold=np.nan)
 
 log.basicConfig(stream=sys.stdout, level=log.DEBUG, format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
 
@@ -61,14 +64,23 @@ def main_wrapper():
     learning = regression.LinearRegressionWithoutUrl()
     learning.learn(data)
     log.info('%s' % learning.ws)
-    print(ws)
 
 def main():
-    try:
-        main_wrapper()
-    except Exception:
-        log.info('action=end-with-exception')
-        raise
+    _elapsed = 0
+    for i in range(1000):
+        start = time.time()
+        args = process_args()
+        data = generator.Generator(cursor=db.get_cursor(), table=select_data(args), limit=30000, offset=1000)
+        for request in data:
+            print("test")
+        elapsed = time.time() - start
+        _elapsed = _elapsed + elapsed
+    print(_elapsed/1000)
+    # try:
+    #     main_wrapper()
+    # except Exception:
+    #     log.info('action=end-with-exception')
+    #     raise
 
 if __name__ == "__main__":
     main()
