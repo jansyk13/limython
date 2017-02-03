@@ -2,4 +2,5 @@ language: python
 python:
   - "3.5"
 install: "pip install -r requirements.txt"
-script: (cd src & python -m unittest)
+before_script: cd src
+script: python -m unittest
