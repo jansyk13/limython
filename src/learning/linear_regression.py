@@ -13,7 +13,8 @@ class LinearRegression:
         self.matrix = matrix
         self.labels = labels
         self.payloads = payloads
-        self.ws = self._least_squared_regression(matrix, payloads)
+        self.ws = self._least_squared_regression_with_generalized_inverse(
+            matrix, payloads)
 
     def predict(self, requests):
         raise Exception(
@@ -36,4 +37,14 @@ class LinearRegression:
             raise Exception("Singular matrix")
         ws = xt_x.I * (x_mat.T * y_mat)
         log.info('action=least-squared-regression status=end')
+        return ws
+
+    def _least_squared_regression_with_generalized_inverse(self, x_array, y_array):
+        log.info('action=least-squared-regression-generalized-inverse status=start size=\'%s,%s\'' %
+                 (x_array.shape[0], x_array.shape[1]))
+        x_mat = np.mat(x_array)
+        y_mat = np.mat(y_array).T
+        xt_x = x_mat.T * x_mat
+        ws = np.linalg.pinv(xt_x) * (x_mat.T * y_mat)
+        log.info('action=least-squared-regression-generalized-inverse status=end')
         return ws

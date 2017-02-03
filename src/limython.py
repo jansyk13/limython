@@ -15,7 +15,7 @@ import learning.linear_regression as regression
 import numpy as np
 np.set_printoptions(threshold=np.nan)
 
-log.basicConfig(stream=sys.stdout, level=log.DEBUG,
+log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
 
 
@@ -71,7 +71,7 @@ def main_wrapper():
     # log.info('action=counters data=\'%s\' utilization=\'%s\' sum=%d' % (processor.node_counters, utilization, counters_sum))
     learning = regression.LinearRegression()
     learning.learn(data)
-    log.info('%s' % learning.ws)
+    log.info('actio=result ws=%s' % learning.ws)
 
 
 def main():

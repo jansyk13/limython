@@ -20,13 +20,18 @@ class DataTest(unittest.TestCase):
 
         matrix, payloads, labels = data.transform(requests)
 
-        expected = [[1, 1, 0, 1, 1, 0, 1, 0],
-                    [1, 0, 1, 1, 0, 1, 0, 1]]
+        expected = [[1, 1, 0, 1, 1, 0, 1, 1, 1, 0],
+                    [1, 0, 1, 1, 0, 1, 1, 1, 0, 1]]
         self.assertTrue(np.array_equal(
             matrix, expected), 'Matrixes not equals actual=%s expected=%s' % (matrix, expected))
         self.assertTrue(np.array_equal(
             payloads, [200, -1]), 'Payloads not equal')
         self.assertTrue(np.array_equal(labels, [
-            '127.0.0.1', 'GET', 'POST', 'HTTP 1.1', 200, 204, 'A/B/C', 'A/B/D']), 'Labels not equal')
+            '127.0.0.1', 'GET', 'POST', 'HTTP 1.1', 200, 204, 'A', 'B', 'C', 'D']), 'Labels not equal')
         log.info('action=trrrrrrrrrrrollll  %s %s %s' %
                  (matrix, payloads, labels))
+
+    def testConcatenate(self):
+        result = np.concatenate(([[1,1,1], [1,1,1]], [[1],[1]]), 1)
+
+        self.assertTrue(np.array_equal(result, [[1,1,1,1], [1,1,1,1]]))

@@ -1,6 +1,7 @@
 import logging as log
 import json
 import numpy as np
+import transformation.url as url
 
 
 def transform(requests):
@@ -10,7 +11,6 @@ def transform(requests):
     distinct_methods = _distinct(requests, lambda x: x.method)
     distinct_protocols = _distinct(requests, lambda x: x.protocol)
     distinct_statuses = _distinct(requests, lambda x: x.status)
-    distinct_urls = _distinct(requests, lambda x: x.url)
     log.info('action=labels status=start')
     # concating lists
     labels = []
@@ -18,7 +18,6 @@ def transform(requests):
     labels.extend(distinct_methods)
     labels.extend(distinct_protocols)
     labels.extend(distinct_statuses)
-    labels.extend(distinct_urls)
     log.info('action=labels status=end values=\'%s\'', labels)
     size = len(labels)
     # number of requests, has to iterate over - using generator
@@ -32,35 +31,41 @@ def transform(requests):
         # fill matrix with data - indicator variables are 0/1
         log.info('action=filling-matrix status=start index=%s value=\'%s\''
                  % (row_index, json.dumps(request.__dict__)))
-        column_index = distinct_sources.index(request.source) - 1
-        log.debug('action=setting_value type=source index=(%s,%s)' % (row_index, column_index))
+        column_index = distinct_sources.index(request.source)
+        log.debug('action=setting_value type=source index=(%s,%s)' %
+                  (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
-            distinct_methods.index(request.method) - 1
-        log.debug('action=setting_value type=method index=(%s,%s)' % (row_index, column_index))
-        matrix[row_index, column_index] = 1
-        column_index = len(distinct_sources) +\
-            len(distinct_methods) +\
-            distinct_protocols.index(request.protocol) - 1
-        log.debug('action=setting_value type=protocol index=(%s,%s)' % (row_index, column_index))
+            distinct_methods.index(request.method)
+        log.debug('action=setting_value type=method index=(%s,%s)' %
+                  (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
             len(distinct_methods) +\
-            len(distinct_protocols) +\
-            distinct_statuses.index(request.status) - 1
-        log.debug('action=setting_value type=status index=(%s,%s)' % (row_index, column_index))
+            distinct_protocols.index(request.protocol)
+        log.debug('action=setting_value type=protocol index=(%s,%s)' %
+                  (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
             len(distinct_methods) +\
             len(distinct_protocols) +\
-            len(distinct_statuses) +\
-            distinct_urls.index(request.url) - 1
-        log.debug('action=setting_value type=url index=(%s,%s)' % (row_index, column_index))
+            distinct_statuses.index(request.status)
+        log.debug('action=setting_value type=status index=(%s,%s)' %
+                  (row_index, column_index))
         matrix[row_index, column_index] = 1
         payloads.append(request.payload_size)
         row_index += 1
         log.info('action=filling-matrix status=end')
-    return matrix, payloads, labels
+
+    url_parser = url.MatrixUrlParser()
+    url_matrix, url_labels = url_parser.parse([row.url for row in requests])
+
+    log.info('action=concate status=start')
+    matrix_with_url = np.concatenate((matrix, url_matrix), 1)
+    labels.extend(url_labels)
+    log.info('action=concate status=end')
+
+    return matrix_with_url, payloads, labels
 
 
 def _distinct(seq, function):

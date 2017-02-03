@@ -32,5 +32,5 @@ class Generator:
         # id + limit paging is faster than standard limit + offset
         # full scan of indexed column instead of full scan of a whole table
         return "SELECT id, source, time_stamp, method, url, protocol," + \
-            " status, payload_size FROM %s WHERE id>=%d ORDER BY id ASC LIMIT %d"
-        % (self.table, id, self.offset)
+            " status, payload_size FROM %s WHERE id>=%d ORDER BY id ASC LIMIT %d" % (
+                self.table, id, self.offset)
