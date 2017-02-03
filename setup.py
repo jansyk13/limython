@@ -11,6 +11,9 @@ setup(name='limython',
       package_dir={
         'models': 'src/models',
         'processors': 'src/processors',
+        'transformation': 'src/transformation',
+        'data': 'src/data',
+        'learning': 'src/learning',
       },
       install_requires=[
         'mysqlclient==1.3.9',

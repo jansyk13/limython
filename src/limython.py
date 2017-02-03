@@ -15,29 +15,35 @@ import learning.linear_regression as regression
 import numpy as np
 np.set_printoptions(threshold=np.nan)
 
-log.basicConfig(stream=sys.stdout, level=log.DEBUG, format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
+log.basicConfig(stream=sys.stdout, level=log.DEBUG,
+                format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
+
 
 def select_data(args):
     case = {
-    'test': 'test_data',
-    'training': 'training_data'
+        'test': 'test_data',
+        'training': 'training_data'
     }
     return case[args.data]
+
 
 def best_counter_processor_supplier(args):
     return processors.best_counter_processor.BestCounterProcessor(args.node_count)
 
+
 def simple_round_robin_supplier(args):
     return processors.simple_processor.SimpleRoundRobinProcessor(args.node_count)
 
+
 def select_processor(args):
     case = {
-    'simple-round-robin': simple_round_robin_supplier,
-    'best-counter': best_counter_processor_supplier
+        'simple-round-robin': simple_round_robin_supplier,
+        'best-counter': best_counter_processor_supplier
     }
     select_function = case[args.processor]
     log.info('action=selecting-processor value=%s' % args.processor)
     return select_function(args)
+
 
 def process_args():
     parser = argparse.ArgumentParser()
@@ -49,10 +55,12 @@ def process_args():
     log.info('action=args values="%s"' % args)
     return args
 
+
 def main_wrapper():
     args = process_args()
     # processor = select_processor(args)
-    data = generator.Generator(cursor=db.get_cursor(), table=select_data(args), limit=30000, offset=1000)
+    data = generator.Generator(cursor=db.get_cursor(
+    ), table=select_data(args), limit=30000, offset=1000)
     # with concurrent.futures.ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
     #     log.info('action=processing status=start')
     #     start_time = time.time()
@@ -65,17 +73,19 @@ def main_wrapper():
     learning.learn(data)
     log.info('%s' % learning.ws)
 
+
 def main():
     _elapsed = 0
     for i in range(1000):
         start = time.time()
         args = process_args()
-        data = generator.Generator(cursor=db.get_cursor(), table=select_data(args), limit=30000, offset=1000)
+        data = generator.Generator(cursor=db.get_cursor(
+        ), table=select_data(args), limit=30000, offset=1000)
         for request in data:
             print("test")
         elapsed = time.time() - start
         _elapsed = _elapsed + elapsed
-    print(_elapsed/1000)
+    print(_elapsed / 1000)
     # try:
     #     main_wrapper()
     # except Exception:

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-num_lines_half = sum(1 for line in open('raw_data'))/2
+num_lines_half = sum(1 for line in open('raw_data')) / 2
 
 with open('raw_data', 'r') as f:
     with open("training_data.sql", "a") as training_data_file:
         with open("test_data.sql", "a") as test_data_file:
-            for i,line in enumerate(f):
+            for i, line in enumerate(f):
                 values = line.split()
                 if len(values) != 7:
                     print(values)
@@ -19,8 +19,8 @@ with open('raw_data', 'r') as f:
                 insert = "INSERT INTO %s (source, time_stamp, method," + \
                     " url, protocol, status, payload_size) VALUES " + \
                     "(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', %s); \n"
-                    % (table, values[0], values[1], values[2], values[3], \
-                     values[4], values[5], value[6])
+                    % (table, values[0], values[1], values[2], values[3],
+                       values[4], values[5], value[6])
                 if i <= num_lines_half:
                     training_data_file.write(insert)
                 else:

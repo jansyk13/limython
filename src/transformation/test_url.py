@@ -2,9 +2,11 @@ import logging as log
 import numpy as np
 import sys
 import unittest
-import url
+import transformation.url as url
 
-log.basicConfig(stream=sys.stdout, level=log.DEBUG, format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
+log.basicConfig(stream=sys.stdout, level=log.DEBUG,
+                format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
+
 
 class UrlTest(unittest.TestCase):
 
@@ -14,8 +16,8 @@ class UrlTest(unittest.TestCase):
 
         result = parser.parse(urls)
 
-        self.assertTrue(np.array_equal(result, [[1,1,1,0], [1,1,0,1]]),
-         'Matrixes not equals, result=%s' % result)
+        self.assertTrue(np.array_equal(result, [[1, 1, 1, 0], [1, 1, 0, 1]]),
+                        'Matrixes not equals, result=%s' % result)
 
     def testRemovingRequestParams(self):
         urls = ['A/B?troll']
@@ -23,9 +25,10 @@ class UrlTest(unittest.TestCase):
 
         result = parser.parse(urls)
 
-        self.assertTrue(np.array_equal(result, [[1,1]]), 'Incorrectly parsed with params')
+        self.assertTrue(np.array_equal(
+            result, [[1, 1]]), 'Incorrectly parsed with params')
 
     def testDeduplicateListKeepingOrder(self):
-        result = url.deduplicate(['A','B','A'])
+        result = url.deduplicate(['A', 'B', 'A'])
 
-        self.assertEquals(result, ['A', 'B'])
+        self.assertEqual(result, ['A', 'B'])

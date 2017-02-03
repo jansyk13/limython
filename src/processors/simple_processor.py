@@ -3,7 +3,9 @@ import time
 import json
 import logging as log
 
+
 class SimpleRoundRobinProcessor:
+
     def __init__(self, node_count):
         self.node_count = int(node_count)
         self.lock = threading.Lock()
@@ -12,7 +14,8 @@ class SimpleRoundRobinProcessor:
         self.node_counters = [0] * int(node_count)
 
     def process(self, request):
-        log.info('action=process status=start id=%s data="%s"' % (request.id, json.dumps(request.__dict__)))
+        log.info('action=process status=start id=%s data="%s"' %
+                 (request.id, json.dumps(request.__dict__)))
         # select next node while using lock to make this thread safe
         try:
             # get lock
@@ -33,7 +36,8 @@ class SimpleRoundRobinProcessor:
         try:
             # get lock - counter specific
             self.node_locks[index].acquire()
-            log.info('action=payload-processing status=start id=%s value=%s' % (request.id, request.payload_size))
+            log.info('action=payload-processing status=start id=%s value=%s' %
+                     (request.id, request.payload_size))
             # add payload size to counter
             self.node_counters[index] += request.payload_size
             log.info('action=payload-processing status=end id=%s' % request.id)

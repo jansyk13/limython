@@ -1,5 +1,6 @@
 # model class for Request
 class Request:
+
     def __init__(self, id, source, time_stamp, method, url, protocol, status, payload_size):
         self.id = id
         self.source = source
