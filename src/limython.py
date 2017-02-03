@@ -75,22 +75,11 @@ def main_wrapper():
 
 
 def main():
-    _elapsed = 0
-    for i in range(1000):
-        start = time.time()
-        args = process_args()
-        data = generator.Generator(cursor=db.get_cursor(
-        ), table=select_data(args), limit=30000, offset=1000)
-        for request in data:
-            print("test")
-        elapsed = time.time() - start
-        _elapsed = _elapsed + elapsed
-    print(_elapsed / 1000)
-    # try:
-    #     main_wrapper()
-    # except Exception:
-    #     log.info('action=end-with-exception')
-    #     raise
+    try:
+        main_wrapper()
+    except Exception:
+        log.info('action=end-with-exception')
+        raise
 
 if __name__ == "__main__":
     main()

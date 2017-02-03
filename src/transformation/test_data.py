@@ -20,11 +20,13 @@ class DataTest(unittest.TestCase):
 
         matrix, payloads, labels = data.transform(requests)
 
-        self.assertEqual(np.array_equal(
-            matrix, [[1, 1], [1, 0], [0, 1], [1, 1], [0, 1], [1, 0], [1, 0], [0, 1]]))
-        self.assertEqual(np.array_equal(
+        expected = [[1, 1, 0, 1, 1, 0, 1, 0],
+                    [1, 0, 1, 1, 0, 1, 0, 1]]
+        self.assertTrue(np.array_equal(
+            matrix, expected), 'Matrixes not equals actual=%s expected=%s' % (matrix, expected))
+        self.assertTrue(np.array_equal(
             payloads, [200, -1]), 'Payloads not equal')
-        self.assertEqual(np.array_equal(labels, [
-                         '127.0.0.1', 'GET', 'POST', 'HTTP 1.1', 200, 204, 'A/B/C', 'A/B/D']), 'Labels not equal')
+        self.assertTrue(np.array_equal(labels, [
+            '127.0.0.1', 'GET', 'POST', 'HTTP 1.1', 200, 204, 'A/B/C', 'A/B/D']), 'Labels not equal')
         log.info('action=trrrrrrrrrrrollll  %s %s %s' %
                  (matrix, payloads, labels))
