@@ -61,7 +61,7 @@ def main_wrapper():
     # utilization = [c*int(args.node_count)/counters_sum for c in processor.node_counters]
     # log.info('action=processing status=end time=%s' % (time.time() - start_time))
     # log.info('action=counters data=\'%s\' utilization=\'%s\' sum=%d' % (processor.node_counters, utilization, counters_sum))
-    learning = regression.LinearRegressionWithoutUrl()
+    learning = regression.LinearRegression()
     learning.learn(data)
     log.info('%s' % learning.ws)
 

@@ -1,9 +1,8 @@
-import gc
 import json
 import logging as log
 import numpy as np
 
-class LinearRegressionWithoutUrl:
+class LinearRegression:
     def __init__(self):
         log.info("action=init")
 
@@ -14,8 +13,11 @@ class LinearRegressionWithoutUrl:
         self.payloads = payloads
         self.ws = self._least_squared_regression(matrix, payloads)
 
-    # def predict(self, requests):
+    def predict(self, requests):
+        raise Exception('Not implemented due matrix being singulard all the time...')
 
+    def test(self, requests):
+        raise Exception('Not implemented due matrix being singulard all the time...')
 
     def _transform(self, requests):
         log.info('action=distinct-values')
