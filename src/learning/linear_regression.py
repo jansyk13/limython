@@ -1,4 +1,5 @@
 import transformation.data as data
+import transformation.url as url
 import logging as log
 import numpy as np
 
@@ -16,13 +17,63 @@ class LinearRegression:
         self.ws = self._least_squared_regression_with_generalized_inverse(
             matrix, payloads)
 
-    def predict(self, requests):
-        raise Exception(
-            'Not implemented due matrix being singulard all the time...')
+    def test(self, requests, adjust_function=None):
+        log.info('action=test status=start')
+        sum_actual = 0
+        descriptors_matrix = np.empty((0, len(self.labels)))
+        to_add = []
 
-    def test(self, requests):
-        raise Exception(
-            'Not implemented due matrix being singulard all the time...')
+        # create and concatenate descriptors
+        for request in requests:
+            descriptor_matrix = np.array([self._desribe(request)])
+            to_add.append(descriptor_matrix)
+            sum_actual = sum_actual + request.payload_size
+        descriptors_matrix = np.concatenate(
+            (descriptors_matrix, *to_add), 0)
+        predicted = np.dot(descriptors_matrix, self.ws)
+
+        # adjust prediction and collect
+        _adjusted_predictions = []
+        for idx, prediction in enumerate(predicted[0:]):
+            _prediction = prediction
+            if adjust_function is not None:
+                _prediction = adjust_function(_prediction)
+            _adjusted_predictions.append(_prediction)
+
+        # count deviations + set predicted value to request
+        deviations = []
+        _requests = []
+        for idx, request in enumerate(requests):
+            dev = request.payload_size - _adjusted_predictions[idx]
+            deviations.append(dev)
+            request.payload_size = _adjusted_predictions[idx]
+            _requests.append(request)
+
+        # sum absolute values of deviations
+        sum_dev = 0
+        for dev in deviations:
+            sum_dev = sum_dev + abs(dev)
+
+        # total deviation in percentage
+        total_deviation = (100 / sum_actual) * sum_dev
+        log.info('action=prediction deviation=%s' % deviation)
+        log.info('action=test status=end')
+        return deviations, total_deviation, _requests
+
+    def _desribe(self, request):
+        descriptor_matrix = np.zeros(len(self.labels))
+        if request.source in self.labels:
+            descriptor_matrix[self.labels.index(request.source)] = 1
+        if request.method in self.labels:
+            descriptor_matrix[self.labels.index(request.method)] = 1
+        if request.protocol in self.labels:
+            descriptor_matrix[self.labels.index(request.protocol)] = 1
+        if request.status in self.labels:
+            descriptor_matrix[self.labels.index(request.status)] = 1
+        for _url in url.remove_query_params(url.split(request.url)):
+            if _url in self.labels:
+                descriptor_matrix[self.labels.index(_url)] = 1
+        return descriptor_matrix
 
     def _transform(self, requests):
         return data.transform(requests)

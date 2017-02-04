@@ -18,7 +18,7 @@ class UrlTest(unittest.TestCase):
 
         self.assertTrue(np.array_equal(result, [[1, 1, 1, 0], [1, 1, 0, 1]]),
                         'Matrixes not equals, result=%s' % result)
-        self.assertEqual(labels, ['A', 'B', 'C', 'D'])
+        self.assertEqual(labels, ['A', 'A/B', 'A/B/C', 'A/B/D'])
 
     def testParserUnequalLengths(self):
         urls = ['A/B/C', 'A/B']
@@ -28,7 +28,7 @@ class UrlTest(unittest.TestCase):
 
         self.assertTrue(np.array_equal(result, [[1, 1, 1], [1, 1, 0]]),
                         'Matrixes not equals, result=%s' % result)
-        self.assertEqual(labels, ['A', 'B', 'C'])
+        self.assertEqual(labels, ['A', 'A/B', 'A/B/C'])
 
     def testRemovingRequestParams(self):
         urls = ['A/B?troll']
@@ -38,9 +38,14 @@ class UrlTest(unittest.TestCase):
 
         self.assertTrue(np.array_equal(
             result, [[1, 1]]), 'Incorrectly parsed with params')
-        self.assertEqual(labels, ['A', 'B'])
+        self.assertEqual(labels, ['A', 'A/B'])
 
     def testDeduplicateListKeepingOrder(self):
         result = url.deduplicate(['A', 'B', 'A'])
 
         self.assertEqual(result, ['A', 'B'])
+
+    def testSplit(self):
+        result = url.split("A/B/C")
+
+        self.assertEqual(result, ["A", "A/B", "A/B/C"])

@@ -14,8 +14,8 @@ class SimpleRoundRobinProcessor:
         self.node_counters = [0] * int(node_count)
 
     def process(self, request):
-        log.info('action=process status=start id=%s data="%s"' %
-                 (request.id, json.dumps(request.__dict__)))
+        log.debug('action=process status=start id=%s data="%s"' %
+                  (request.id, json.dumps(request.__dict__)))
         # select next node while using lock to make this thread safe
         try:
             # get lock
@@ -36,14 +36,15 @@ class SimpleRoundRobinProcessor:
         try:
             # get lock - counter specific
             self.node_locks[index].acquire()
-            log.info('action=payload-processing status=start id=%s value=%s' %
-                     (request.id, request.payload_size))
+            log.debug('action=payload-processing status=start id=%s value=%s' %
+                      (request.id, request.payload_size))
             # add payload size to counter
             self.node_counters[index] += request.payload_size
-            log.info('action=payload-processing status=end id=%s' % request.id)
+            log.debug('action=payload-processing status=end id=%s' %
+                      request.id)
         except Exception as ex:
             log.exception('action=payload-processing status=error')
         finally:
             # release lock - counter specific
             self.node_locks[index].release()
-        log.info('action=process status=end id=%s' % request.id)
+        log.debug('action=process status=end id=%s' % request.id)

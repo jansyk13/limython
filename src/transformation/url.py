@@ -17,13 +17,14 @@ class MatrixUrlParser:
         log.info('action=init')
 
     def parse(self, list):
-        values = [remove_query_params(value.split("/")) for value in list]
+        values = [remove_query_params(split(value)) for value in list]
         length = len(values)
         matrix = np.empty((length, 0))
         return self._parse(matrix, values, [])
 
     def _parse(self, matrix, values, labels):
-        log.info("action=_parse matrix=%s labels=(%s)" % (matrix.shape, len(labels)))
+        log.info("action=_parse matrix=%s labels=(%s)" %
+                 (matrix.shape, len(labels)))
         _first_values = []
         for value in values:
             if len(value) > 0:
@@ -39,7 +40,7 @@ class MatrixUrlParser:
             if (len(row) > 0):
                 _decide_on = row.pop(0)
                 _index = _distinct_first_values.index(_decide_on)
-                log.info('action=setting_value_in_new_columns indexes=(%s,%s)' %
+                log.debug('action=setting-value_in_new_columns indexes=(%s,%s)' %
                          (_idx, _index))
                 new_columns[_idx, _index] = 1
             _idx = _idx + 1
@@ -47,6 +48,11 @@ class MatrixUrlParser:
         new_matrix = np.concatenate((matrix, new_columns), 1)
         log.info('action=concatenate status=end')
         return self._parse(new_matrix, values, labels)
+
+
+def split(url):
+    splits = url.split("/")
+    return ["/".join(splits[:i+1]) for i,split in enumerate(splits)]
 
 
 def remove_query_params(row):

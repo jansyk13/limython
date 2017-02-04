@@ -18,7 +18,7 @@ def transform(requests):
     labels.extend(distinct_methods)
     labels.extend(distinct_protocols)
     labels.extend(distinct_statuses)
-    log.info('action=labels status=end values=\'%s\'', labels)
+    log.info('action=labels status=end count=%s', len(labels))
     size = len(labels)
     # number of requests, has to iterate over - using generator
     request_count = sum([1 for request in requests])
@@ -29,33 +29,33 @@ def transform(requests):
     row_index = 0
     for request in requests:
         # fill matrix with data - indicator variables are 0/1
-        log.info('action=filling-matrix status=start index=%s value=\'%s\''
+        log.debug('action=filling-matrix status=start index=%s value=\'%s\''
                  % (row_index, json.dumps(request.__dict__)))
         column_index = distinct_sources.index(request.source)
-        log.debug('action=setting_value type=source index=(%s,%s)' %
+        log.debug('action=setting-value type=source index=(%s,%s)' %
                   (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
             distinct_methods.index(request.method)
-        log.debug('action=setting_value type=method index=(%s,%s)' %
+        log.debug('action=setting-value type=method index=(%s,%s)' %
                   (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
             len(distinct_methods) +\
             distinct_protocols.index(request.protocol)
-        log.debug('action=setting_value type=protocol index=(%s,%s)' %
+        log.debug('action=setting-value type=protocol index=(%s,%s)' %
                   (row_index, column_index))
         matrix[row_index, column_index] = 1
         column_index = len(distinct_sources) +\
             len(distinct_methods) +\
             len(distinct_protocols) +\
             distinct_statuses.index(request.status)
-        log.debug('action=setting_value type=status index=(%s,%s)' %
+        log.debug('action=setting-value type=status index=(%s,%s)' %
                   (row_index, column_index))
         matrix[row_index, column_index] = 1
         payloads.append(request.payload_size)
         row_index += 1
-        log.info('action=filling-matrix status=end')
+        log.debug('action=filling-matrix status=end')
 
     url_parser = url.MatrixUrlParser()
     url_matrix, url_labels = url_parser.parse([row.url for row in requests])

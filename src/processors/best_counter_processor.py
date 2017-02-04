@@ -12,8 +12,8 @@ class BestCounterProcessor:
         self.node_counters = [0] * int(node_count)
 
     def process(self, request):
-        log.info('action=process status=start id=%s data="%s"' %
-                 (request.id, json.dumps(request.__dict__)))
+        log.debug('action=process status=start id=%s data="%s"' %
+                  (request.id, json.dumps(request.__dict__)))
         try:
             # get lock
             # using only one lock because min function needs lock on all of
@@ -23,11 +23,11 @@ class BestCounterProcessor:
             index = self.node_counters.index(min(self.node_counters))
             # adding payload size to counter
             self.node_counters[index] += request.payload_size
-            log.info('action=payload-processing id=%s value=%s' %
-                     (request.id, request.payload_size))
+            log.debug('action=payload-processing id=%s value=%s' %
+                      (request.id, request.payload_size))
         except Exception as ex:
             log.exception('action=payload-processing status=error')
         finally:
             # release lock
             self.lock.release()
-        log.info('action=process status=end id=%s' % request.id)
+        log.debug('action=process status=end id=%s' % request.id)
