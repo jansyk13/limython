@@ -39,9 +39,9 @@ class LinearRegressionTest(unittest.TestCase):
         learning.labels = ['127.0.0.1', 'GET',
                            'HTTP 1.1', 200, 'A', 'A/B', 'A/B/C']
 
-        deviations, avg_dev = learning.test(requests)
-        self.assertEqual(deviations, [3.5])
-        self.assertEqual(avg_dev, 3.5)
+        deviations, avg_dev, requests = learning.test(requests)
+        self.assertEqual(deviations, [193])
+        self.assertEqual(avg_dev, 96.5)
 
     def testDescribe(self):
         req1 = Request(1, '127.0.0.1', '30:13:57:47',

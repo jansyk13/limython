@@ -1,4 +1,5 @@
 import transformation.data as data
+from models.request import Request
 import transformation.url as url
 import logging as log
 import numpy as np
@@ -46,19 +47,20 @@ class LinearRegression:
         for idx, request in enumerate(requests):
             dev = request.payload_size - _adjusted_predictions[idx]
             deviations.append(dev)
-            request.payload_size = _adjusted_predictions[idx]
-            _requests.append(request)
+            _req = Request.clone_with_predicted(
+                request, int(_adjusted_predictions[idx]))
+            _requests.append(_req)
 
         # sum absolute values of deviations
         sum_dev = 0
         for dev in deviations:
             sum_dev = sum_dev + abs(dev)
 
-        # total deviation in percentage
-        total_deviation = (100 / sum_actual) * sum_dev
-        log.info('action=prediction deviation=%s' % deviation)
+        # average deviation in percentage
+        avg_deviation = (100 / sum_actual) * sum_dev
+        log.info('action=prediction deviation=%s' % avg_deviation)
         log.info('action=test status=end')
-        return deviations, total_deviation, _requests
+        return deviations, avg_deviation, _requests
 
     def _desribe(self, request):
         descriptor_matrix = np.zeros(len(self.labels))
