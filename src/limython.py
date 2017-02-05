@@ -7,11 +7,12 @@ import data.mysql as db
 import logging as log
 import processors.simple_processor
 import processors.best_counter_processor
-import processors.best_counter_processor_for_regression
+import processors.best_counter_processor_with_predicted
 import sys
 import time
 
 import learning.linear_regression as regression
+import learning.regression_tree as tree
 
 import numpy as np
 np.set_printoptions(threshold=np.nan)
@@ -38,8 +39,8 @@ def best_counter_processor_supplier(args):
     return processors.best_counter_processor.BestCounterProcessor(args.node_count)
 
 
-def best_counter_for_regression_processor_supplier(args):
-    return processors.best_counter_processor_for_regression.BestCounterProcessorForRegression(args.node_count)
+def best_counter_with_predicted_processor_supplier(args):
+    return processors.best_counter_processor_with_predicted.BestCounterProcessorWithPredicted(args.node_count)
 
 
 def simple_round_robin_supplier(args):
@@ -50,7 +51,7 @@ def select_processor(args):
     case = {
         'simple-round-robin': simple_round_robin_supplier,
         'best-counter': best_counter_processor_supplier,
-        'best-counter-for-regression': best_counter_for_regression_processor_supplier
+        'best-counter-with-predicted': best_counter_with_predicted_processor_supplier
     }
     select_function = case[args.processor]
     log.info('action=selecting-processor value=%s' % args.processor)
@@ -68,6 +69,12 @@ def learning(args):
         deviations, avg_deviation, _requests = learning.test(
             test_data, lambda x: adjust_function(x))
         return _requests
+    elif args.prediction == 'tree':
+        learning = tree.RegressionTree()
+        learning.learn(data)
+        deviations, avg_deviation, _requests = learning.test(
+            test_data, lambda x: adjust_function(x))
+        return _requests
     else:
         return test_data
 
@@ -75,7 +82,7 @@ def learning(args):
 def process_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-p", "--processor", help="Request processor(simple-round-robin,best-counter,best-counter-for-regression)")
+        "-p", "--processor", help="Request processor(simple-round-robin,best-counter,best-counter-with-predicted)")
     parser.add_argument("-n", "--node-count",
                         help="Node count for processor(1,2,3,...)")
     parser.add_argument("-t", "--threads",
@@ -83,7 +90,7 @@ def process_args():
     parser.add_argument(
         "-l", "--limit", help="Data limit in generators(1,2,3,...)")
     parser.add_argument("-pr", "--prediction",
-                        help="Prediction ML model(regression)")
+                        help="Prediction ML model(regression,tree)")
     args = parser.parse_args()
     log.info('action=args values="%s"' % args)
     return args
@@ -93,8 +100,8 @@ def main_wrapper():
     args = process_args()
     processor = select_processor(args)
     data = learning(args)
+    log.info('action=processing status=start')
     with concurrent.futures.ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
-        log.info('action=processing status=start')
         start_time = time.time()
         executor.map(processor.process, data)
     counters_sum = sum(processor.node_counters)

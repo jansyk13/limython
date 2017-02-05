@@ -8,6 +8,8 @@ class Generator:
         self.limit = limit
         self.offset = offset
         self.table = table
+        if self.limit < self.offset:
+            self.offset = self.limit
 
     def __iter__(self):
         _id = 1
@@ -22,11 +24,12 @@ class Generator:
             for row in self.cursor.fetchall():
                 yield Request(row[0], row[1], row[2], row[3],
                               row[4], row[5], row[6], row[7])
-            # over limit -> end
-            if _id > self.limit:
-                break
+
             # next
             _id += self.offset
+            # over limit -> end
+            if _id >= self.limit:
+                break
 
     def _create_select(self, id):
         # id + limit paging is faster than standard limit + offset

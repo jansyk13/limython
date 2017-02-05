@@ -1,5 +1,5 @@
 from models.request import Request
-import processors.best_counter_processor_for_regression as processor
+import processors.best_counter_processor_with_predicted as processor
 import logging as log
 import sys
 import unittest
@@ -8,10 +8,10 @@ log.basicConfig(stream=sys.stdout, level=log.DEBUG,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
 
 
-class BestCounterProcessorForRegressionTest(unittest.TestCase):
+class BestCounterProcessorWithPredictedTest(unittest.TestCase):
 
     def testProcess(self):
-        _processor = processor.BestCounterProcessorForRegression(node_count=3)
+        _processor = processor.BestCounterProcessorWithPredicted(node_count=3)
 
         req1 = Request(1, '127.0.0.1', '30:13:57:47',
                        'GET', 'A/B/C', 'HTTP 1.1', 200, 200)

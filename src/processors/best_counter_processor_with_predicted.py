@@ -4,7 +4,7 @@ import threading
 import time
 
 
-class BestCounterProcessorForRegression:
+class BestCounterProcessorWithPredicted:
 
     def __init__(self, node_count):
         self.node_count = int(node_count)
