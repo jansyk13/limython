@@ -64,14 +64,10 @@ class LinearRegression:
 
     def _desribe(self, request):
         descriptor_matrix = np.zeros(len(self.labels))
-        if request.source in self.labels:
-            descriptor_matrix[self.labels.index(request.source)] = 1
         if request.method in self.labels:
             descriptor_matrix[self.labels.index(request.method)] = 1
         if request.protocol in self.labels:
             descriptor_matrix[self.labels.index(request.protocol)] = 1
-        if request.status in self.labels:
-            descriptor_matrix[self.labels.index(request.status)] = 1
         for _url in url.remove_query_params(url.split(request.url)):
             if _url in self.labels:
                 descriptor_matrix[self.labels.index(_url)] = 1

@@ -42,8 +42,8 @@ class LinearRegressionTest(unittest.TestCase):
 
         learning = tree.RegressionTree()
 
-        feature, value = learning._choose_split(
-            matrix, tree._reg_leaf, tree._reg_error, 1, 1, 1)
+        feature, value, to_skip = learning._choose_split(
+            matrix, tree._reg_leaf, tree._reg_error, 1, 1, [], 1)
 
         self.assertEqual(feature, 0)
         self.assertEqual(value, 1)

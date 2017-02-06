@@ -2,7 +2,6 @@ from models.tree_node import Node
 from models.request import Request
 import concurrent.futures
 import multiprocessing
-import threading
 import transformation.data as data
 import logging as log
 import numpy as np
@@ -43,13 +42,13 @@ class RegressionTree:
             descriptor_matrix = np.array([self._desribe(request)])
             to_add.append(descriptor_matrix)
             payloads.append(request.payload_size)
-        matrix = np.concatenate((descriptors_matrix, *to_add), 0)
+        descriptors_matrix = np.concatenate((descriptors_matrix, *to_add), 0)
 
-        matrix, payloads, labels = self._transform(requests)
+        _matrix, payloads, labels = self._transform(requests)
         sum_payloads = np.sum(payloads)
         results = []
         log.info('action=applying-result status=start')
-        for idx, request_matrix in enumerate(matrix):
+        for idx, request_matrix in enumerate(descriptors_matrix):
             if idx % 100 == 0:
                 log.info('action=applying-result status=running id=%s' % idx)
             results.append(self.tree.apply(request_matrix))
@@ -73,7 +72,7 @@ class RegressionTree:
     def _transform(self, requests):
         return data.transform(requests)
 
-    def _create_tree(self, matrix, leaf_type, error_type, max_error, min_leaf_size, to_skip=[], depth=0, condition=None):
+    def _create_tree(self, matrix, leaf_type, error_type, max_error, min_leaf_size, to_skip=[], depth=0):
         log.info('action=_create_tree status=start depth=%s' % depth)
         feature, value, add_to_skip = self._choose_split(
             matrix, leaf_type, error_type, max_error, min_leaf_size, to_skip, (depth + 1))
@@ -82,12 +81,10 @@ class RegressionTree:
         if (add_to_skip == True and len(set(matrix[:, feature])) == 2):
             to_skip.append(feature)
         left, right = _bin_split_matrix(matrix, feature, value)
-        _right_condition = threading.Condition()
-        _right_condition.acquire()
         _right_future = self.executor.submit(self._create_tree,
                                              right, leaf_type, error_type,
                                              max_error, min_leaf_size,
-                                             list(to_skip), (depth + 1), _right_condition)
+                                             list(to_skip), (depth + 1))
         _left = self._create_tree(
             left, leaf_type, error_type, max_error, min_leaf_size, list(to_skip), (depth + 1))
 
@@ -100,14 +97,16 @@ class RegressionTree:
                     right, leaf_type, error_type, max_error,
                     min_leaf_size, list(to_skip), (depth + 1))
             else:
+                # dirty hack
+                _time = 0.01
                 while not _right_future.done():
-                    _right_condition.wait(0.1)
+                    time.sleep(_time)
+                    _time = 2 * _time
+                    if _time > 1:
+                        _time = 0.01
                 _right = _right_future.result()
 
         log.info('action=_create_tree status=end depth=%s' % depth)
-        if condition is not None and not _right_future.cancelled():
-            condition.release()
-            condition.notify
         return Node(feature, value, _left, _right)
 
     def _choose_split(self, matrix, leaf_type, error_type, max_error, min_leaf_size, to_skip, depth):
@@ -147,14 +146,10 @@ class RegressionTree:
 
     def _desribe(self, request):
         descriptor_matrix = np.zeros(len(self.labels))
-        if request.source in self.labels:
-            descriptor_matrix[self.labels.index(request.source)] = 1
         if request.method in self.labels:
             descriptor_matrix[self.labels.index(request.method)] = 1
         if request.protocol in self.labels:
             descriptor_matrix[self.labels.index(request.protocol)] = 1
-        if request.status in self.labels:
-            descriptor_matrix[self.labels.index(request.status)] = 1
         for _url in url.remove_query_params(url.split(request.url)):
             if _url in self.labels:
                 descriptor_matrix[self.labels.index(_url)] = 1
