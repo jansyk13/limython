@@ -9,6 +9,7 @@ import processors.simple_processor
 import processors.best_counter_processor
 import processors.best_counter_processor_with_predicted
 import sys
+import os
 import time
 
 import learning.linear_regression as regression
@@ -19,6 +20,8 @@ np.set_printoptions(threshold=np.nan)
 
 log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
+
+os.system("taskset -p 0xfffff %d" % os.getpid())
 
 
 def adjust_function(_prediction):

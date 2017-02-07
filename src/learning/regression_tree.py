@@ -17,6 +17,8 @@ class RegressionTree:
         log.info('action=init')
         self.executor = concurrent.futures.ThreadPoolExecutor(
             multiprocessing.cpu_count() * 10)
+        self.entropy_executor = concurrent.futures.ThreadPoolExecutor(
+            multiprocessing.cpu_count())
 
     def learn(self, requests):
         matrix, payloads, labels = self._transform(requests)
@@ -49,7 +51,7 @@ class RegressionTree:
         results = []
         log.info('action=applying-result status=start')
         for idx, request_matrix in enumerate(descriptors_matrix):
-            if idx % 100 == 0:
+            if idx % 1000 == 0:
                 log.info('action=applying-result status=running id=%s' % idx)
             results.append(self.tree.apply(request_matrix))
         log.info('action=applying-result status=end')
@@ -126,13 +128,20 @@ class RegressionTree:
                 log.info('action=_choose_split id=%s depth=%s' % (_idx, depth))
             if _idx in to_skip:
                 continue
+
+            futures = []
             for _val in set(matrix[:, _idx]):
-                _entropy = _calculate_entropy(matrix, leaf_type,
-                                              error_type, _idx, _val, min_leaf_size)
+                _f = self.entropy_executor.submit(_calculate_entropy, matrix, leaf_type,
+                                                  error_type, _idx, _val, min_leaf_size)
+                futures.append(_f)
+
+            for _f in futures:
+                _entropy, _f_idx, _f_val = _f.result()
                 if _entropy < _best_entropy:
-                    _best_index = _idx
-                    _best_value = _val
+                    _best_index = _f_idx
+                    _best_value = _f_val
                     _best_entropy = _entropy
+
         if (_current_entropy - _best_entropy) < max_error:
             log.info(
                 'action=_choose_split status=end-not-enough-information-gain depth=%s' % depth)
@@ -159,8 +168,8 @@ class RegressionTree:
 def _calculate_entropy(matrix, leaf_type, error_type, _idx, _val, min_leaf_size):
     _left, _right = _bin_split_matrix(matrix, _idx, _val)
     if (np.shape(_left)[0] < min_leaf_size) or (np.shape(_right)[0] < min_leaf_size):
-        return np.inf
-    return (error_type(_left) + error_type(_right))
+        return np.inf, _idx, _val
+    return (error_type(_left) + error_type(_right)), _idx, _val
 
 
 def _reg_leaf(matrix):

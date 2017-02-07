@@ -26,10 +26,9 @@ class Node():
         return json.dumps(self, default=lambda o: _resolve_dump(o), indent=indent)
 
     def apply(self, request_matrix):
-        log.debug('action=apply self=%s request_matrix=%s' % (self.to_json(), request_matrix))
         if self.feature is None:
             return self.value
-        if request_matrix[self.feature-1] > self.value:
+        if request_matrix[self.feature - 1] > self.value:
             return self.left_child.apply(request_matrix)
         else:
             return self.right_child.apply(request_matrix)
