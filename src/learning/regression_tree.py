@@ -15,10 +15,6 @@ class RegressionTree:
 
     def __init__(self):
         log.info('action=init')
-        self.executor = concurrent.futures.ThreadPoolExecutor(
-            multiprocessing.cpu_count() * 10)
-        self.entropy_executor = concurrent.futures.ThreadPoolExecutor(
-            multiprocessing.cpu_count())
 
     def learn(self, requests):
         matrix, payloads, labels = self._transform(requests)
@@ -28,7 +24,7 @@ class RegressionTree:
         _matrix = np.concatenate((matrix, np.array([payloads]).T), 1)
         log.info('action=tree status=start')
         self.tree = self._create_tree(
-            _matrix, _reg_leaf, _reg_error, 1, 10)
+            _matrix, _reg_leaf, _reg_error, 1, 500)
         log.debug('action=tree status=end value=%s' %
                   self.tree.to_json(indent=1))
         log.info('action=tree status=end')
@@ -83,30 +79,10 @@ class RegressionTree:
         if (add_to_skip == True and len(set(matrix[:, feature])) == 2):
             to_skip.append(feature)
         left, right = _bin_split_matrix(matrix, feature, value)
-        _right_future = self.executor.submit(self._create_tree,
-                                             right, leaf_type, error_type,
-                                             max_error, min_leaf_size,
-                                             list(to_skip), (depth + 1))
+        _right = self._create_tree(
+            right, leaf_type, error_type, max_error, min_leaf_size, list(to_skip), (depth + 1))
         _left = self._create_tree(
             left, leaf_type, error_type, max_error, min_leaf_size, list(to_skip), (depth + 1))
-
-        # to avoid deadlock, still running out of threads in pool
-        if _right_future.done():
-            _right = _right_future.result()
-        else:
-            if _right_future.cancel():
-                _right = self._create_tree(
-                    right, leaf_type, error_type, max_error,
-                    min_leaf_size, list(to_skip), (depth + 1))
-            else:
-                # dirty hack
-                _time = 0.01
-                while not _right_future.done():
-                    time.sleep(_time)
-                    _time = 2 * _time
-                    if _time > 1:
-                        _time = 0.01
-                _right = _right_future.result()
 
         log.info('action=_create_tree status=end depth=%s' % depth)
         return Node(feature, value, _left, _right)
@@ -128,18 +104,12 @@ class RegressionTree:
                 log.info('action=_choose_split id=%s depth=%s' % (_idx, depth))
             if _idx in to_skip:
                 continue
-
-            futures = []
             for _val in set(matrix[:, _idx]):
-                _f = self.entropy_executor.submit(_calculate_entropy, matrix, leaf_type,
-                                                  error_type, _idx, _val, min_leaf_size)
-                futures.append(_f)
-
-            for _f in futures:
-                _entropy, _f_idx, _f_val = _f.result()
+                _entropy = _calculate_entropy(
+                    matrix, leaf_type, error_type, _idx, _val, min_leaf_size)
                 if _entropy < _best_entropy:
-                    _best_index = _f_idx
-                    _best_value = _f_val
+                    _best_index = _idx
+                    _best_value = _val
                     _best_entropy = _entropy
 
         if (_current_entropy - _best_entropy) < max_error:
@@ -168,8 +138,8 @@ class RegressionTree:
 def _calculate_entropy(matrix, leaf_type, error_type, _idx, _val, min_leaf_size):
     _left, _right = _bin_split_matrix(matrix, _idx, _val)
     if (np.shape(_left)[0] < min_leaf_size) or (np.shape(_right)[0] < min_leaf_size):
-        return np.inf, _idx, _val
-    return (error_type(_left) + error_type(_right)), _idx, _val
+        return np.inf
+    return (error_type(_left) + error_type(_right))
 
 
 def _reg_leaf(matrix):

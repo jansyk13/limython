@@ -9,7 +9,6 @@ import processors.simple_processor
 import processors.best_counter_processor
 import processors.best_counter_processor_with_predicted
 import sys
-import os
 import time
 
 import learning.linear_regression as regression
@@ -20,9 +19,6 @@ np.set_printoptions(threshold=np.nan)
 
 log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
-
-os.system("taskset -p 0xfffff %d" % os.getpid())
-
 
 def adjust_function(_prediction):
     if _prediction < 0:
@@ -63,9 +59,9 @@ def select_processor(args):
 
 def learning(args):
     data = generator.Generator(cursor=db.get_cursor(
-    ), table=select_data('training'), limit=int(args.limit), offset=1000)
+    ), table=select_data('training'), limit=int(args.training_limit), offset=1000)
     test_data = generator.Generator(cursor=db.get_cursor(
-    ), table=select_data('test'), limit=int(args.limit), offset=1000)
+    ), table=select_data('test'), limit=int(args.testing_limit), offset=1000)
     if args.prediction == 'regression':
         learning = regression.LinearRegression()
         learning.learn(data)
@@ -91,7 +87,9 @@ def process_args():
     parser.add_argument("-t", "--threads",
                         help="Thread count for processor(1,2,3,...)")
     parser.add_argument(
-        "-l", "--limit", help="Data limit in generators(1,2,3,...)")
+        "-trl", "--training-limit", help="Data limit in training generators(1,2,3,...)")
+    parser.add_argument(
+        "-tel", "--testing-limit", help="Data limit in testing generators(1,2,3,...)")
     parser.add_argument("-pr", "--prediction",
                         help="Prediction ML model(regression,tree)")
     args = parser.parse_args()
