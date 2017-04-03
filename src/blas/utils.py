@@ -1,4 +1,4 @@
-mport ctypes
+import ctypes
 from ctypes.util import find_library
 
 # http://stackoverflow.com/questions/29559338/set-max-number-of-threads-at-runtime-on-numpy-openblas
