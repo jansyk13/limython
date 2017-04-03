@@ -16,7 +16,6 @@ import processors.utils as processor_utils
 import sys
 import transformation.categorical as categorical
 import validation.kfold as kfold
-import blas.utils as blas
 
 log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
@@ -149,8 +148,7 @@ def main_wrapper():
 
 def main():
     try:
-        with blas.num_threads(32):
-            main_wrapper()
+        main_wrapper()
     except Exception:
         log.info('action=end-with-exception')
         raise
