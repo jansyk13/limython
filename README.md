@@ -10,4 +10,4 @@
 * BLAS prereq(build essentials + tools) `sudo yum install automake autoconf libtool* gcc-gfortran`
 * BLAS `sudo yum install lapack-devel blas-devel atlas-sse3-devel`
 * See BLAS `python -c "import numpy; numpy.show_config()"` `python -c "import scipy; scipy.show_config()"`
-* Make sure BLAS is setup correctly `export MKL_NUM_THREADS=1` `export OPENBLAS_NUM_THREADS=1` `export NUMEXPR_NUM_THREADS=1`
+* Make sure BLAS is setup correctly `export MKL_NUM_THREADS=32` `export OPENBLAS_NUM_THREADS=32` `export NUMEXPR_NUM_THREADS=32`

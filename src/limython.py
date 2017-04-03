@@ -67,13 +67,18 @@ def simple_round_robin_supplier(args):
     return processors.simple_processor.SimpleRoundRobinProcessor(args.node_count)
 
 
-def select_processor(args):
+def select_processor_supplier(args):
     case = {
         'simple-round-robin': simple_round_robin_supplier,
         'best-counter': best_counter_processor_supplier,
     }
     select_function = case[args.processor]
     log.info('action=selecting-processor value=%s' % args.processor)
+    return select_function
+
+
+def select_processor(args):
+    select_function = select_processor_supplier(args)
     return select_function(args)
 
 
@@ -143,7 +148,7 @@ def main_wrapper():
                  (processor.node_counters, rmse, rsquarred))
 
     if (args.k_folds):
-        validator = kfold.Kfold(select_model_supplier(
+        validator = kfold.Kfold(select_model_supplier(args), select_processor_supplier(
             args), dataframe, headers, args.k_folds, args)
         validator.validate()
     log.info("action=main status=end")

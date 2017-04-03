@@ -7,9 +7,10 @@ import processors.dummy_processor as processor
 
 class Kfold:
 
-    def __init__(self, model_supplier, dataframe, headers, kfolds, args):
+    def __init__(self, model_supplier, processor_supplier, dataframe, headers, kfolds, args):
         log.info("action=init")
         self.model_supplier = model_supplier
+        self.processor_supplier = processor_supplier
         self.dataframe = dataframe
         self.headers = headers
         self.kfolds = kfolds
@@ -28,11 +29,12 @@ class Kfold:
             model.learn(y=dataframe_train['payload_size'],
                         x=dataframe_train[self.headers])
             predictions = model.predict(dataframe_test[self.headers])
+            processor = self.processor_supplier(self.args)
             rmse, rsquarred = processor_utils.process_and_compute_stats(
-                processor.DummyProcessor(), dataframe_test, predictions)
+                processor, dataframe_test, predictions)
 
-            log.info("action=kfold index=%s rmse=%s rsquarred=%s" %
-                     (idx, rmse, rsquarred))
+            log.info("action=kfold index=%s counter=%s rmse=%s rsquarred=%s" %
+                     (idx, processor.node_counters, rmse, rsquarred))
 
         log.info("action=validate status=end")
 
