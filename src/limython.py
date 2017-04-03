@@ -26,7 +26,7 @@ def regression_tree_supplier(args):
 
 
 def ols_regression_supplier(args):
-    return ols.Ols()
+    return ols.Ols(args.arguments)
 
 
 def ridge_regression_supplier(args):
@@ -142,8 +142,7 @@ def main_wrapper():
     if (args.k_folds):
         validator = kfold.Kfold(select_model_supplier(
             args), dataframe, headers, args.k_folds, args)
-        is_ols = args.model == u'ols'
-        validator.validate(is_ols)
+        validator.validate()
     log.info("action=main status=end")
 
 

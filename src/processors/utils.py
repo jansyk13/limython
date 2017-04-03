@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def process_and_compute_stats(processor, dataframe, predictions, ols=False):
+def process_and_compute_stats(processor, dataframe, predictions):
     average_payload_size = dataframe['payload_size'].mean()
     rmse = 0
     rsquarred_upper = 0
@@ -10,11 +10,7 @@ def process_and_compute_stats(processor, dataframe, predictions, ols=False):
     _length = len(dataframe.index)
     for idx, prediction in extract(predictions):
         processor.process(prediction)
-        # workaround for ols because of different indexing
-        if (ols):
-            real_value = dataframe.loc[idx]['payload_size'].item()
-        else:
-            real_value = dataframe.iloc[idx]['payload_size'].item()
+        real_value = dataframe.iloc[idx]['payload_size'].item()
         real_prediction = prediction.item()
         rmse = rmse + \
             (real_value - real_prediction) ** (2)

@@ -17,7 +17,7 @@ class TestKfold(unittest.TestCase):
         df = pd.DataFrame({"A": [10, 20, 30, 40, 50], "B": [
                            20, 30, 10, 40, 50], "payload_size": [32, 234, 23, 23, 42523]})
         validator = kfold.Kfold(_help, df, ['A', 'B'], 2, {})
-        validator.validate(True)
+        validator.validate()
 
     def testGroups(self):
         groups = kfold._groups(5, 11)
@@ -27,4 +27,4 @@ class TestKfold(unittest.TestCase):
 
 
 def _help(args):
-    return ols.Ols()
+    return ols.Ols({})

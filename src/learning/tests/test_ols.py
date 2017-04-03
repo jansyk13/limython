@@ -16,7 +16,7 @@ class TestOLS(unittest.TestCase):
         ldf = pd.DataFrame({"A": [10, 20, 30, 40, 50], "B": [
                            20, 30, 10, 40, 50], "C": [32, 234, 23, 23, 42523]})
 
-        model = ols.Ols()
+        model = ols.Ols({})
         model.learn(y=ldf['C'], x=ldf[['A', 'B']])
 
     def testPredict(self):
@@ -25,7 +25,7 @@ class TestOLS(unittest.TestCase):
         pdf = pd.DataFrame(
             {"A": [10, 20, 30, 40, 50], "B": [20, 30, 10, 40, 50]})
 
-        model = ols.Ols()
+        model = ols.Ols({})
         model.learn(y=ldf['C'], x=ldf[['A', 'B']])
 
         result = model.predict(pdf)

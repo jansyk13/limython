@@ -15,7 +15,7 @@ class Kfold:
         self.kfolds = kfolds
         self.args = args
 
-    def validate(self, ols=False):
+    def validate(self):
         log.info("action=validate status=start kfolds=%s" % self.kfolds)
         group_kfold = GroupKFold(n_splits=self.kfolds)
         groups = _groups(self.kfolds, len(self.dataframe.index))
@@ -29,7 +29,7 @@ class Kfold:
                         x=dataframe_train[self.headers])
             predictions = model.predict(dataframe_test[self.headers])
             rmse, rsquarred = processor_utils.process_and_compute_stats(
-                processor.DummyProcessor(), dataframe_test, predictions, ols)
+                processor.DummyProcessor(), dataframe_test, predictions)
 
             log.info("action=kfold index=%s rmse=%s rsquarred=%s" %
                      (idx, rmse, rsquarred))

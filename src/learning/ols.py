@@ -1,15 +1,19 @@
 import logging as log
-from pandas.stats.api import ols
+from sklearn import linear_model
+import learning.utils as utils
 
 
+# http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
 class Ols:
 
-    def __init__(self):
-        log.info("action=init")
+    def __init__(self, kwargs):
+        log.info("action=init kwargs=%s" % kwargs)
+        self.args = utils._parse_kwargs(kwargs)
 
     def learn(self, y, x):
         log.info("action=learning status=start")
-        self.model = ols(y=y,  x=x)
+        self.model = linear_model.LinearRegression(**self.args)
+        self.model.fit(x, y)
         log.info("action=learning status=end")
 
     def predict(self, dataframe):
@@ -17,7 +21,7 @@ class Ols:
         if (not self.model):
             raise Exception
 
-        result = self.model.predict(x=dataframe)
+        result = self.model.predict(dataframe)
 
         log.info("action=predict status=end")
         return result
