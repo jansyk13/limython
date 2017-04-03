@@ -1,45 +1,66 @@
 #!/usr/bin/env python
-
 import argparse
-import concurrent.futures
-import data.generator as generator
-import data.mysql as db
+import MySQLdb
 import logging as log
+import learning.ols as ols
+import learning.lasso as lasso
+import learning.sgd as sgd
+import learning.ridge as ridge
+import learning.tree as tree
+import numpy as np
+import pandas as pd
+import pandas.io.sql as pdsql
 import processors.simple_processor
 import processors.best_counter_processor
-import processors.best_counter_processor_with_predicted
+import processors.utils as processor_utils
 import sys
-import time
-
-import learning.linear_regression as regression
-import learning.regression_tree as tree
-
-import numpy as np
-np.set_printoptions(threshold=np.nan)
+import transformation.categorical as categorical
+import validation.kfold as kfold
 
 log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
 
-def adjust_function(_prediction):
-    if _prediction < 0:
-        return 0
-    return _prediction
+
+def regression_tree_supplier(args):
+    return tree.Tree(args.arguments)
 
 
-def select_data(data):
+def ols_regression_supplier(args):
+    return ols.Ols()
+
+
+def ridge_regression_supplier(args):
+    return ridge.Ridge(args.arguments)
+
+
+def sgd_regression_supplier(args):
+    return sgd.Sgd(args.arguments)
+
+
+def lasso_regression_supplier(args):
+    return lasso.Lasso(args.arguments)
+
+
+def select_model_supplier(args):
     case = {
-        'test': 'test_data',
-        'training': 'training_data'
+        'ols': ols_regression_supplier,
+        'lasso': lasso_regression_supplier,
+        'ridge': ridge_regression_supplier,
+        'sgd': sgd_regression_supplier,
+        'tree': regression_tree_supplier
     }
-    return case[data]
+    select_function = case[args.model]
+    log.info('action=selecting-model value=%s' % args.model)
+    return select_function
+
+
+def select_model(args):
+    select_function = select_model_supplier(args)
+    return select_function(args)
 
 
 def best_counter_processor_supplier(args):
     return processors.best_counter_processor.BestCounterProcessor(args.node_count)
-
-
-def best_counter_with_predicted_processor_supplier(args):
-    return processors.best_counter_processor_with_predicted.BestCounterProcessorWithPredicted(args.node_count)
 
 
 def simple_round_robin_supplier(args):
@@ -50,68 +71,76 @@ def select_processor(args):
     case = {
         'simple-round-robin': simple_round_robin_supplier,
         'best-counter': best_counter_processor_supplier,
-        'best-counter-with-predicted': best_counter_with_predicted_processor_supplier
     }
     select_function = case[args.processor]
     log.info('action=selecting-processor value=%s' % args.processor)
     return select_function(args)
 
 
-def learning(args):
-    data = generator.Generator(cursor=db.get_cursor(
-    ), table=select_data('training'), limit=int(args.training_limit), offset=1000)
-    test_data = generator.Generator(cursor=db.get_cursor(
-    ), table=select_data('test'), limit=int(args.testing_limit), offset=1000)
-    if args.prediction == 'regression':
-        learning = regression.LinearRegression()
-        learning.learn(data)
-        deviations, avg_deviation, _requests = learning.test(
-            test_data, lambda x: adjust_function(x))
-        return _requests
-    elif args.prediction == 'tree':
-        learning = tree.RegressionTree()
-        learning.learn(data)
-        deviations, avg_deviation, _requests = learning.test(
-            test_data, lambda x: adjust_function(x))
-        return _requests
-    else:
-        return test_data
-
-
 def process_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-p", "--processor", help="Request processor(simple-round-robin,best-counter,best-counter-with-predicted)")
-    parser.add_argument("-n", "--node-count",
+    parser.add_argument("-p", "--processor", required=True,
+                        help="Request processor(simple-round-robin,best-counter)")
+    parser.add_argument("-n", "--node-count", required=True,
                         help="Node count for processor(1,2,3,...)")
-    parser.add_argument("-t", "--threads",
-                        help="Thread count for processor(1,2,3,...)")
-    parser.add_argument(
-        "-trl", "--training-limit", help="Data limit in training generators(1,2,3,...)")
-    parser.add_argument(
-        "-tel", "--testing-limit", help="Data limit in testing generators(1,2,3,...)")
-    parser.add_argument("-pr", "--prediction",
-                        help="Prediction ML model(regression,tree)")
+    parser.add_argument("-l", "--limit", required=True,
+                        help="Data limit(to avoid running out of memory)")
+    parser.add_argument("-k", "--k-folds", type=int, default=1,
+                        help="Number of folds for cross validation(higher better, but computation more expensive)")
+    parser.add_argument("-m", "--model", required=True,
+                        help="ML model(ols, lasso, ridge, sgd, tree)")
+    parser.add_argument("-a", "--arguments",
+                        help="ML model arguments - kwargs separated with comma")
+    parser.add_argument("-u", "--url", type=bool, default=False,
+                        help="Flag whether url should be parsed into tree like indicators")
+    parser.add_argument("-f", "--features", type=str, default='*',
+                        help="List of features - comma separated")
     args = parser.parse_args()
     log.info('action=args values="%s"' % args)
     return args
 
 
+def to_omit(url):
+    omit = ["payload_size"]
+    if (url):
+        # omit url because it will parsed separate way
+        omit.append('url')
+    return omit
+
+
 def main_wrapper():
+    log.info("action=main status=start")
     args = process_args()
     processor = select_processor(args)
-    data = learning(args)
-    log.info('action=processing status=start')
-    with concurrent.futures.ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
-        start_time = time.time()
-        executor.map(processor.process, data)
-    counters_sum = sum(processor.node_counters)
-    utilization = [c * int(args.node_count) /
-                   counters_sum for c in processor.node_counters]
-    log.info('action=processing status=end time=%s' %
-             (time.time() - start_time))
-    log.info('action=counters data=\'%s\' utilization=\'%s\' sum=%d' %
-             (processor.node_counters, utilization, counters_sum))
+    conn = MySQLdb.connect(host="localhost", user="root",
+                           passwd="password", db="mlrl")
+    _to_omit = to_omit(args.url)
+
+    dataframe, headers = categorical.tranform(
+        pdsql.read_sql_query(
+            "SELECT %s FROM data LIMIT %s" % (args.features, args.limit),
+            conn
+        ),
+        _to_omit
+    )
+
+    model = select_model(args)
+    model.learn(y=dataframe['payload_size'],
+                x=dataframe[headers])
+    predictions = model.predict(dataframe[headers])
+
+    rmse, rsquarred = processor_utils.process_and_compute_stats(
+        processor, dataframe, predictions)
+
+    log.info("action=results counter=%s rmse=%s rsquarred=%s" %
+             (processor.node_counters, rmse, rsquarred))
+
+    if (args.k_folds):
+        validator = kfold.Kfold(select_model_supplier(
+            args), dataframe, headers, args.k_folds, args)
+        is_ols = args.model == u'ols'
+        validator.validate(is_ols)
+    log.info("action=main status=end")
 
 
 def main():

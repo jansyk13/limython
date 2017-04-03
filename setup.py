@@ -18,6 +18,11 @@ setup(name='limython',
       install_requires=[
         'mysqlclient==1.3.9',
         'configparser==3.5.0',
-        'numpy==1.11.3',
+        'numpy==1.12.1',
+        'scipy==0.19.0'
+        'pandas==0.19.2',
+        'statsmodels==0.6.1',
+        'scikit-learn==0.18.1'
+        'pytest==3.0.7',
       ]
      )

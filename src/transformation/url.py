@@ -1,68 +1,38 @@
 import logging as log
 import numpy as np
-
-# Transforms url into tree based binary values
-# Example:
-# A/B/C
-# A/B/D
-# To:
-# A B C D
-# 1 1 1 0
-# 1 1 0 1
+import pandas as pd
+from itertools import chain
 
 
-class MatrixUrlParser:
-
-    def __init__(self):
-        log.info('action=init')
-
-    def parse(self, list):
-        values = [remove_query_params(split(value)) for value in list]
-        length = len(values)
-        matrix = np.empty((length, 0))
-        return self._parse(matrix, values, [])
-
-    def _parse(self, matrix, values, labels):
-        log.info("action=_parse matrix=%s labels=(%s)" %
-                 (matrix.shape, len(labels)))
-        _first_values = []
-        for value in values:
-            if len(value) > 0:
-                _first_values.append(value[0])
-        if len(_first_values) == 0:
-            return matrix, labels
-        _distinct_first_values = deduplicate(_first_values)
-        labels.extend(_distinct_first_values)
-
-        new_columns = np.zeros((len(values), len(_distinct_first_values)))
-        _idx = 0
-        for row in values:
-            if (len(row) > 0):
-                _decide_on = row.pop(0)
-                _index = _distinct_first_values.index(_decide_on)
-                log.debug('action=setting-value_in_new_columns indexes=(%s,%s)' %
-                         (_idx, _index))
-                new_columns[_idx, _index] = 1
-            _idx = _idx + 1
-        log.info('action=concatenate status=start')
-        new_matrix = np.concatenate((matrix, new_columns), 1)
-        log.info('action=concatenate status=end')
-        return self._parse(new_matrix, values, labels)
+def parse(dataframe):
+    data, index, labels = _parse(dataframe)
+    return pd.DataFrame(data=data, index=index, columns=labels)
 
 
-def split(url):
+def _parse(dataframe):
+    log.info("action=url_parase status=start")
+    values = _remove_query_params(dataframe['url'].values.tolist())
+    values = list(chain.from_iterable([_split(val) for val in values]))
+    values = _deduplicate(values)
+
+    log.info("action=url_parase status=end")
+    return values
+    # return parse(new_matrix, values, labels)
+
+
+def _split(url):
     splits = url.split("/")
-    return ["/".join(splits[:i+1]) for i,split in enumerate(splits)]
+    return ["/".join(splits[:i + 2]) for i, split in enumerate(splits)]
 
 
-def remove_query_params(row):
+def _remove_query_params(row):
     _row = row
     if "?" in _row[-1]:
         _row[-1] = _row[-1].split('?', 1)[0]
     return _row
 
 
-def deduplicate(seq):
+def _deduplicate(seq):
     checked = []
     for e in seq:
         if e not in checked:

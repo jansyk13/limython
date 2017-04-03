@@ -2,3 +2,4 @@ build
 *.pyc
 *.swp
 __pycache__
+.cache
