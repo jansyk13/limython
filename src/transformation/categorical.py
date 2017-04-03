@@ -1,7 +1,8 @@
 import pandas as pd
+import transformation.url as url
 
 
-def tranform(dataframe, omit):
+def tranform(dataframe, omit, parse_url=False, limit_url=None):
     categorical_headers = list(dataframe.select_dtypes(
         include=['category', 'object']).columns)
 
@@ -18,7 +19,11 @@ def tranform(dataframe, omit):
 
     new_headers = list(result.columns)
     _remove_if_contains(new_headers, omit)
-    return result, new_headers
+    if (parse_url and parse_url == u'true'):
+        result = url.parse(result, limit_url)
+        return result, list(result.columns)
+    else:
+        return result, new_headers
 
 
 def _remove_if_contains(from_list, remove):

@@ -85,14 +85,16 @@ def process_args():
                         help="Node count for processor(1,2,3,...)")
     parser.add_argument("-l", "--limit", required=True,
                         help="Data limit(to avoid running out of memory)")
-    parser.add_argument("-k", "--k-folds", type=int, default=1,
+    parser.add_argument("-k", "--k-folds", type=int, default=2,
                         help="Number of folds for cross validation(higher better, but computation more expensive)")
     parser.add_argument("-m", "--model", required=True,
                         help="ML model(ols, lasso, ridge, sgd, tree)")
     parser.add_argument("-a", "--arguments",
                         help="ML model arguments - kwargs separated with comma")
-    parser.add_argument("-u", "--url", type=bool, default=False,
+    parser.add_argument("-u", "--url", default='false',
                         help="Flag whether url should be parsed into tree like indicators")
+    parser.add_argument("-ul", "--url-limit", type=int, default=None,
+                        help="Limit depth of tree hierarchy of dummy variable parsed from urls")
     parser.add_argument("-f", "--features", type=str, default='*',
                         help="List of features - comma separated")
     args = parser.parse_args()
@@ -102,7 +104,7 @@ def process_args():
 
 def to_omit(url):
     omit = ["payload_size"]
-    if (url):
+    if (url and url == u'true'):
         # omit url because it will parsed separate way
         omit.append('url')
     return omit
@@ -121,7 +123,9 @@ def main_wrapper():
             "SELECT %s FROM data LIMIT %s" % (args.features, args.limit),
             conn
         ),
-        _to_omit
+        _to_omit,
+        args.url,
+        args.url_limit
     )
 
     model = select_model(args)

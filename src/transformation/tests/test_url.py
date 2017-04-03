@@ -12,12 +12,14 @@ log.basicConfig(stream=sys.stdout, level=log.DEBUG,
 
 class TestUrl(unittest.TestCase):
 
-    def test_Parse(self):
+    def testParse(self):
         value = pd.DataFrame({"url": ["/A/B", "/A/B/C", "/A/B/C/D"]})
 
-        result = url._parse(value)
-        self.assertEqual(
-            result, ['/A', '/A/B', '/A/B/C', '/A/B/C/D'])
+        result = url.parse(value)
+        expected = pd.DataFrame({"url-/A": [1.0, 1.0, 1.0], "url-/A/B":  [
+                                1.0, 1.0, 1.0], "url-/A/B/C": [0.0, 1.0, 1.0], "url-/A/B/C/D": [0.0, 0.0, 1.0]})
+
+        npt.assert_allclose(result.sort(axis=1), expected.sort(axis=1))
 
     def testSplit(self):
         value = "/A/B/C/D"

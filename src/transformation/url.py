@@ -4,28 +4,39 @@ import pandas as pd
 from itertools import chain
 
 
-def parse(dataframe):
-    data, index, labels = _parse(dataframe)
-    return pd.DataFrame(data=data, index=index, columns=labels)
-
-
-def _parse(dataframe):
-    log.info("action=url_parase status=start")
+def parse(dataframe, limit=None):
+    log.info("action=url_parse status=start")
     values = _remove_query_params(dataframe['url'].values.tolist())
-    values = list(chain.from_iterable([_split(val) for val in values]))
+    values = list(chain.from_iterable([_split(val, limit) for val in values]))
     values = _deduplicate(values)
 
     new_df = dataframe.copy()
-    
+    count = 0
+    log.info("action=url_parse values_size=%s" % len(values))
+    for value in values:
+        if (count % 100 == 0):
+            log.info("action=url_parse count=%s" % count)
+        new_column = np.zeros(shape=(len(dataframe.index), 1))
+        idx = 0
+        for url in new_df['url'].values:
+            if (url.startswith(value)):
+                new_column[idx, 0] = 1
+            idx = idx + 1
+        new_df = pd.concat([new_df, pd.DataFrame(
+            data=new_column, columns=['url-' + value])], axis=1)
+        count = count + 1
 
-    log.info("action=url_parase status=end")
-    return values
-    # return parse(new_matrix, values, labels)
+    new_df.__delitem__('url')
+    log.info("action=url_parse status=end")
+    return new_df
 
 
-def _split(url):
+def _split(url, limit=None):
     splits = url.split("/")
-    return ["/".join(splits[:i + 2]) for i, split in enumerate(splits)]
+    splits = ["/".join(splits[:i + 2]) for i, split in enumerate(splits)]
+    if (limit):
+        splits = splits[:limit]
+    return splits
 
 
 def _remove_query_params(row):
