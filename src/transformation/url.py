@@ -15,6 +15,9 @@ def _parse(dataframe):
     values = list(chain.from_iterable([_split(val) for val in values]))
     values = _deduplicate(values)
 
+    new_df = dataframe.copy()
+    
+
     log.info("action=url_parase status=end")
     return values
     # return parse(new_matrix, values, labels)

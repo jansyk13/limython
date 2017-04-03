@@ -17,7 +17,7 @@ class TestUrl(unittest.TestCase):
 
         result = url._parse(value)
         self.assertEqual(
-            result, ['/A', '/A/B', '/A/B/C', '/A/B/C/D', '/A/B/C/D'])
+            result, ['/A', '/A/B', '/A/B/C', '/A/B/C/D'])
 
     def testSplit(self):
         value = "/A/B/C/D"
