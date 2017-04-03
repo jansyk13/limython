@@ -97,6 +97,8 @@ def process_args():
                         help="Limit depth of tree hierarchy of dummy variable parsed from urls")
     parser.add_argument("-f", "--features", type=str, default='*',
                         help="List of features - comma separated")
+    parser.add_argument("-r", "--run", required=True,
+                        help="'true' or 'false' whether to run full with processor")
     args = parser.parse_args()
     log.info('action=args values="%s"' % args)
     return args
@@ -113,7 +115,6 @@ def to_omit(url):
 def main_wrapper():
     log.info("action=main status=start")
     args = process_args()
-    processor = select_processor(args)
     conn = MySQLdb.connect(host="localhost", user="root",
                            passwd="password", db="mlrl")
     _to_omit = to_omit(args.url)
@@ -128,16 +129,18 @@ def main_wrapper():
         args.url_limit
     )
 
-    model = select_model(args)
-    model.learn(y=dataframe['payload_size'],
-                x=dataframe[headers])
-    predictions = model.predict(dataframe[headers])
+    if (args.run and args.run == u'true'):
+        processor = select_processor(args)
+        model = select_model(args)
+        model.learn(y=dataframe['payload_size'],
+                    x=dataframe[headers])
+        predictions = model.predict(dataframe[headers])
 
-    rmse, rsquarred = processor_utils.process_and_compute_stats(
-        processor, dataframe, predictions)
+        rmse, rsquarred = processor_utils.process_and_compute_stats(
+            processor, dataframe, predictions)
 
-    log.info("action=results counter=%s rmse=%s rsquarred=%s" %
-             (processor.node_counters, rmse, rsquarred))
+        log.info("action=results counter=%s rmse=%s rsquarred=%s" %
+                 (processor.node_counters, rmse, rsquarred))
 
     if (args.k_folds):
         validator = kfold.Kfold(select_model_supplier(
