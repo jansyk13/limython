@@ -1,3 +1,4 @@
+# Limython [![Build Status](https://travis-ci.org/jansyk13/limython.svg?branch=master)](https://travis-ci.org/jansyk13/limython)
 * using test data from http://ita.ee.lbl.gov/html/contrib/EPA-HTTP.html
 * source ~/envs3/ml/bin/activate
 * pip3 install -r requirements.txt
