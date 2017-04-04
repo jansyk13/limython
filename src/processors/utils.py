@@ -13,16 +13,10 @@ def process_and_compute_stats(processor, dataframe, predictions):
     rsquarred_lower = np.array((real - average_payload_size) ** (2)).sum()
 
     t = timer.start()
-    for idx, prediction in extract(predictions):
+    for idx, prediction in np.ndenumerate(predictions):
         processor.process(prediction)
     timer.stop(t)
 
     rmse = (rmse / _length) ** (1 / 2)
     rsquarred = 1 - (rsquarred_upper / rsquarred_lower)
     return float(rmse), float(rsquarred)
-
-
-def extract(predictions):
-    if (type(predictions).__module__ == np.__name__):
-        return np.ndenumerate(predictions)
-    return predictions

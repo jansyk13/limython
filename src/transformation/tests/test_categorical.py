@@ -12,7 +12,7 @@ log.basicConfig(stream=sys.stdout, level=log.DEBUG,
 
 class TestCategorical(unittest.TestCase):
 
-    def test(self):
+    def testTransform(self):
         df = pd.DataFrame(
             {
                 "A": ["a", "b", "c", "a"],
