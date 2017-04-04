@@ -17,4 +17,4 @@ class TestDummyProcessor(unittest.TestCase):
         for idx, prediction in np.ndenumerate(predictions):
             p.process(prediction)
 
-        self.assertIsNone(p.node_counters)
+        self.assertEqual(p.node_counters, [])
