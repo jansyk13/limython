@@ -2,10 +2,12 @@
 
 Python wrapper for machine learning for diploma thesis.
 ## Guide
-Can be run as python script with several mandatory parameters.
+Can be run as python script with several mandatory parameters(`limython.py`).
 `python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`
+To get baselines of data use `baseline.py` script
+`python src/baseline.py -n=3 -p=best-counter -k=10 -r=true -l=1000`
 
-### Help
+### Help limython.py
 ```
 usage: limython.py [-h] -p PROCESSOR -n NODE_COUNT -l LIMIT [-k K_FOLDS] -m
                    MODEL [-a ARGUMENTS] [-u URL] [-ul URL_LIMIT] [-f FEATURES]
@@ -33,6 +35,25 @@ optional arguments:
                         from urls
   -f FEATURES, --features FEATURES
                         List of features - comma separated
+  -r RUN, --run RUN     'true' or 'false' whether to run full with processor
+```
+
+### Help baseline.py
+```
+usage: baseline.py [-h] -p PROCESSOR -n NODE_COUNT -l LIMIT [-k K_FOLDS] -r
+                   RUN
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PROCESSOR, --processor PROCESSOR
+                        Request processor(simple-round-robin,best-counter)
+  -n NODE_COUNT, --node-count NODE_COUNT
+                        Node count for processor(1,2,3,...)
+  -l LIMIT, --limit LIMIT
+                        Data limit(to avoid running out of memory)
+  -k K_FOLDS, --k-folds K_FOLDS
+                        Number of folds for cross validation(higher better,
+                        but computation more expensive)
   -r RUN, --run RUN     'true' or 'false' whether to run full with processor
 ```
 
