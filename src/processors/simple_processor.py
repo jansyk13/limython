@@ -20,5 +20,5 @@ class SimpleRoundRobinProcessor:
         # index starts with 0
         index = selected_node - 1
         # add payload_size to counter
-        self.node_counters[index] += data
+        self.node_counters[index] += data if data > 0 else 0
         log.debug('action=process status=end')

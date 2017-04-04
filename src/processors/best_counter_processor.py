@@ -11,5 +11,5 @@ class BestCounterProcessor:
         log.debug('action=process status=start')
         index = self.node_counters.index(min(self.node_counters))
         # adding payload_size size to counter
-        self.node_counters[index] += data
+        self.node_counters[index] += data if data > 0 else 0
         log.debug('action=process status=end')
