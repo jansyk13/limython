@@ -18,5 +18,5 @@ for i in "${arr[@]}"
 do
    echo "$i"
    touch "results/ols_$i"
-   python src/limython.py -n=3 -l=100 -m=ols -r=false -p=best-counter $i > "results/ols_$i" &
+   python src/limython.py -n=3 -l=10000 -m=ols -r=false -p=best-counter $i > "results/ols_$i" &
 done
