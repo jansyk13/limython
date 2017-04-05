@@ -31,6 +31,8 @@ def count_utilization(processor):
         n = len(processor.node_counters)
         total = reduce(lambda x, y: (x + y), processor.node_counters)
         utilization = []
+        if (total == 0):
+            return [0 for x in processor.node_counters]
         for node_counter in processor.node_counters:
             utilization.append(((100 * n / total) * node_counter) / 100)
         return utilization

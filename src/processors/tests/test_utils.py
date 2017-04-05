@@ -30,6 +30,14 @@ class TestUtils(unittest.TestCase):
 
         self.assertEqual(utilization, [1.0, 2.0, 0.0])
 
+    def testCountUtilizationZeroes(self):
+        processor = s.SimpleRoundRobinProcessor(3)
+        processor.process(0)
+        processor.process(0)
+        utilization = utils.count_utilization(processor)
+
+        self.assertEqual(utilization, [0.0, 0.0, 0.0])
+
     def testCountUtilizationDummy(self):
         utilization = utils.count_utilization(d.DummyProcessor())
 
