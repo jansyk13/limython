@@ -1,7 +1,6 @@
 #!/bin/bash
 # dont run this unless you want to experience freeeeeeeeeeeeeeze
-declare -a arr=("-a=loss=squared_loss,fit_intercept=1"
-                "-a=loss=huber,fit_intercept=1"
+declare -a arr=("-a=loss=huber,fit_intercept=1"
                 "-a=loss=epsilon_insensitive,fit_intercept=1"
                 "-a=loss=squared_epsilon_insensitive,fit_intercept=1"
                 "-a=loss=squared_loss,fit_intercept=0"
