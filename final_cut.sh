@@ -14,5 +14,5 @@ for i in "${arr[@]}"
 do
    echo "$i"
    touch "results/tree_$i"
-   python src/limython.py -n=3 -l=50000 -m=tree -r=false -p=best-counter -k=-1 $i > "results/tree_$i" &
+   python src/limython.py -n=3 -l=50000 -m=tree -r=true -p=best-counter -k=-1 $i > "results/tree_$i" &
 done
