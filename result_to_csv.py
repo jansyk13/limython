@@ -32,8 +32,7 @@ for _file in files:
                 if ("MainThread timer.py INFO action=timer" in line):
                     r = re.search(
                         "^.*MainThread.*value=(.*).*$", line)
-                    if (float(r.group(1)) > 1):
-                        result.append("%s" % r.group(1))
+                    result.append("%s" % r.group(1))
                     continue
             if (to_extract == u'rmse'):
                 if ("MainThread kfold.py INFO action=kfold" in line):
