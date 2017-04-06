@@ -81,7 +81,7 @@ def main_wrapper():
         log.info("action=results counter=%s rmse=%s rsquarred=%s" %
                  (processor.node_counters, rmse, rsquarred))
 
-    if (args.k_folds):
+    if (args.k_folds and args.k_folds is not -1):
         validator = kfold.Kfold(ls.select_model_supplier(args), ps.select_processor_supplier(
             args), dataframe, headers, args.k_folds, args)
         validator.validate()
