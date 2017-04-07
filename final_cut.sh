@@ -12,7 +12,7 @@ declare -a arr=(
                 "-l=50000 -a=criterion=mse,splitter=best,max_depth=20,max_features=log2 -u=true"
                 "-l=1000 -a=criterion=mae,splitter=random,max_depth=20,max_features=log2"
                 "-l=10000 -a=criterion=mae,splitter=random,max_depth=20,max_features=log2"
-                "-l-50000 -a=criterion=mae,splitter=random,max_depth=20,max_features=log2"
+                "-l=50000 -a=criterion=mae,splitter=random,max_depth=20,max_features=log2"
                 "-l=1000 -a=criterion=mse,splitter=best,max_depth=20,max_features=log2"
                 "-l=10000 -a=criterion=mse,splitter=best,max_depth=20,max_features=log2"
                 "-l=50000 -a=criterion=mse,splitter=best,max_depth=20,max_features=log2"
@@ -30,5 +30,5 @@ do
    echo "$i"
    touch "results/tree_$i"
    python src/final.py -m=tree -p=best-counter $i > "results/tree_$i" &
-   sleep 100
+   sleep 60 # contains sleep to avoid running out of memory and allow it to run on instance with less memory(only 60 GB)
 done
