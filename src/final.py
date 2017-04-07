@@ -7,10 +7,10 @@ import numpy as np
 import pandas as pd
 import pandas.io.sql as pdsql
 import processors.selector as ps
+import processors.args_helper as ah
 import processors.utils as processor_utils
 import sys
 import transformation.categorical as categorical
-import validation.kfold as kfold
 
 log.basicConfig(stream=sys.stdout, level=log.INFO,
                 format='%(asctime)-15s %(threadName)s %(filename)s %(levelname)s %(message)s')
@@ -60,7 +60,7 @@ def main_wrapper():
         args.url,
         None
     )
-    processor = ps.select_processor({"node_count": 3, "processor": args.processor})
+    processor = ps.select_processor(ah.ArgsHelper(3, args.processor))
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
@@ -72,7 +72,7 @@ def main_wrapper():
     log.info("action=results node_count=3 counter=%s rmse=%s rsquarred=%s" %
              (processor.node_counters, rmse, rsquarred))
 
-    processor = ps.select_processor({"node_count": 5, "processor": args.processor})
+    processor = ps.select_processor(ah.ArgsHelper(5, args.processor))
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
@@ -84,7 +84,7 @@ def main_wrapper():
     log.info("action=results node_count=5 counter=%s rmse=%s rsquarred=%s" %
              (processor.node_counters, rmse, rsquarred))
 
-    processor = ps.select_processor({"node_count": 10, "processor": args.processor})
+    processor = ps.select_processor(ah.ArgsHelper(10, args.processor))
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
