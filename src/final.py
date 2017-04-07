@@ -60,7 +60,7 @@ def main_wrapper():
         args.url,
         None
     )
-    processor = ps.select_processor({"node_count": 3})
+    processor = ps.select_processor({"node_count": 3, "processor": args.processor})
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
@@ -72,7 +72,7 @@ def main_wrapper():
     log.info("action=results node_count=3 counter=%s rmse=%s rsquarred=%s" %
              (processor.node_counters, rmse, rsquarred))
 
-    processor = ps.select_processor({"node_count": 5})
+    processor = ps.select_processor({"node_count": 5, "processor": args.processor})
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
@@ -84,7 +84,7 @@ def main_wrapper():
     log.info("action=results node_count=5 counter=%s rmse=%s rsquarred=%s" %
              (processor.node_counters, rmse, rsquarred))
 
-    processor = ps.select_processor({"node_count": 10})
+    processor = ps.select_processor({"node_count": 10, "processor": args.processor})
     model = ls.select_model(args)
     model.learn(y=dataframe['payload_size'],
                 x=dataframe[headers])
