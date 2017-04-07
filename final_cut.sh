@@ -29,6 +29,6 @@ for i in "${arr[@]}"
 do
    echo "$i"
    touch "results/tree_$i"
-   python src/final.py -m=tree -r=true -p=best-counter -k=-1 $i > "results/tree_$i" &
+   python src/final.py -m=tree -p=best-counter $i > "results/tree_$i" &
    sleep 100
 done
