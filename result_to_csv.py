@@ -13,9 +13,6 @@ for _file in files:
         name = _file.replace("ols_", "").replace("ridge_", "").replace(
             "tree_", "").replace("lasso_", "").replace("sgd_", "")
         result.append(name)
-        stdev = None
-        rmse = None
-        rsquarred = None
         for line in f:
             if (to_extract == u'stdev'):
                 if ("MainThread utils.py INFO action=utilization value=" in line):
@@ -40,5 +37,9 @@ for _file in files:
                         "^.*MainThread.*rmse=(.*) rsquarred=(.*).*$", line)
                     result.append("%s" % r.group(1))
                     continue
-
+            if (to_extract == u'counter'):
+                if ("action=results node_count=" in line):
+                    r = re.search("^.*MainThread.*\[(.*)\].*$", line)
+                    result.append("%s" % r.group(1))
+                    continue
         print(";".join(result))

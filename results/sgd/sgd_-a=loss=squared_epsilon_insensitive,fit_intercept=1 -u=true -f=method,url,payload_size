@@ -1,0 +1,141 @@
+2017-04-06 18:57:57,833 MainThread limython.py INFO action=main status=start
+2017-04-06 18:57:57,834 MainThread limython.py INFO action=args values="Namespace(arguments='loss=squared_epsilon_insensitive,fit_intercept=1', features='method,url,payload_size', k_folds=10, limit='10000', model='sgd', node_count='3', processor='best-counter', run='false', url='true', url_limit=None)"
+2017-04-06 18:57:57,867 MainThread url.py INFO action=url_parse status=start
+2017-04-06 18:57:58,233 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-06 18:57:58,233 MainThread url.py INFO action=url_parse count=0
+2017-04-06 18:57:59,397 MainThread url.py INFO action=url_parse count=100
+2017-04-06 18:58:01,886 MainThread url.py INFO action=url_parse count=200
+2017-04-06 18:58:05,518 MainThread url.py INFO action=url_parse count=300
+2017-04-06 18:58:10,583 MainThread url.py INFO action=url_parse count=400
+2017-04-06 18:58:17,431 MainThread url.py INFO action=url_parse count=500
+2017-04-06 18:58:28,226 MainThread url.py INFO action=url_parse count=600
+2017-04-06 18:58:41,327 MainThread url.py INFO action=url_parse count=700
+2017-04-06 18:58:56,786 MainThread url.py INFO action=url_parse count=800
+2017-04-06 18:59:10,160 MainThread url.py INFO action=url_parse count=900
+2017-04-06 18:59:25,044 MainThread url.py INFO action=url_parse count=1000
+2017-04-06 18:59:41,353 MainThread url.py INFO action=url_parse count=1100
+2017-04-06 18:59:59,110 MainThread url.py INFO action=url_parse count=1200
+2017-04-06 19:00:18,432 MainThread url.py INFO action=url_parse count=1300
+2017-04-06 19:00:39,298 MainThread url.py INFO action=url_parse count=1400
+2017-04-06 19:01:01,511 MainThread url.py INFO action=url_parse count=1500
+2017-04-06 19:01:25,431 MainThread url.py INFO action=url_parse count=1600
+2017-04-06 19:01:50,757 MainThread url.py INFO action=url_parse count=1700
+2017-04-06 19:02:17,380 MainThread url.py INFO action=url_parse count=1800
+2017-04-06 19:02:45,833 MainThread url.py INFO action=url_parse count=1900
+2017-04-06 19:03:15,001 MainThread url.py INFO action=url_parse count=2000
+2017-04-06 19:03:45,862 MainThread url.py INFO action=url_parse count=2100
+2017-04-06 19:04:18,836 MainThread url.py INFO action=url_parse count=2200
+2017-04-06 19:04:53,051 MainThread url.py INFO action=url_parse count=2300
+2017-04-06 19:05:28,967 MainThread url.py INFO action=url_parse count=2400
+2017-04-06 19:06:05,862 MainThread url.py INFO action=url_parse count=2500
+2017-04-06 19:06:44,609 MainThread url.py INFO action=url_parse count=2600
+2017-04-06 19:07:23,112 MainThread url.py INFO action=url_parse count=2700
+2017-04-06 19:08:03,088 MainThread url.py INFO action=url_parse count=2800
+2017-04-06 19:08:45,435 MainThread url.py INFO action=url_parse count=2900
+2017-04-06 19:08:51,335 MainThread url.py INFO action=url_parse status=end
+2017-04-06 19:08:51,336 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-06 19:08:51,336 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-06 19:08:51,336 MainThread kfold.py INFO action=init
+2017-04-06 19:08:51,336 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-06 19:08:51,827 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:51,932 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:08:53,094 MainThread timer.py INFO action=timer value=1.1619501113891602
+2017-04-06 19:08:53,094 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:08:53,128 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:08:53,147 MainThread timer.py INFO action=timer value=0.01861262321472168
+2017-04-06 19:08:53,147 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:08:53,151 MainThread timer.py INFO action=timer value=0.0037910938262939453
+2017-04-06 19:08:53,152 MainThread utils.py INFO action=utilization value=[0.94345004396672283, 1.1118238463896539, 0.94472610964362314]
+2017-04-06 19:08:53,152 MainThread kfold.py INFO action=kfold index=1 counter=[2.7742055166023852e+19, 3.2693070161678369e+19, 2.7779577750956061e+19] rmse=5.941338445836344e+17 rsquarred=-2.5271028061525372e+26
+2017-04-06 19:08:53,262 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:53,361 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:08:54,518 MainThread timer.py INFO action=timer value=1.1565072536468506
+2017-04-06 19:08:54,518 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:08:54,543 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:08:54,560 MainThread timer.py INFO action=timer value=0.0171205997467041
+2017-04-06 19:08:54,561 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:08:54,565 MainThread timer.py INFO action=timer value=0.0038781166076660156
+2017-04-06 19:08:54,565 MainThread utils.py INFO action=utilization value=[0.76983149898201642, 0.78123886249761487, 1.4489296385203687]
+2017-04-06 19:08:54,566 MainThread kfold.py INFO action=kfold index=2 counter=[1.7426039563628179e+19, 1.768425862611441e+19, 3.2798223038622708e+19] rmse=7.856345804838436e+17 rsquarred=-9.494881345778002e+25
+2017-04-06 19:08:54,678 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:54,774 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:08:55,933 MainThread timer.py INFO action=timer value=1.1586382389068604
+2017-04-06 19:08:55,933 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:08:55,956 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:08:55,975 MainThread timer.py INFO action=timer value=0.018077373504638672
+2017-04-06 19:08:55,975 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:08:55,980 MainThread timer.py INFO action=timer value=0.004054546356201172
+2017-04-06 19:08:55,980 MainThread utils.py INFO action=utilization value=[0.99755154128026813, 0.99930019203779563, 1.0031482666819362]
+2017-04-06 19:08:55,980 MainThread kfold.py INFO action=kfold index=3 counter=[5.5403832064009286e+20, 5.5500951810608366e+20, 5.5714673179912359e+20] rmse=7.164600084344268e+18 rsquarred=-1.3458073676885741e+29
+2017-04-06 19:08:56,093 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:56,189 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:08:57,347 MainThread timer.py INFO action=timer value=1.1576647758483887
+2017-04-06 19:08:57,347 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:08:57,368 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:08:57,387 MainThread timer.py INFO action=timer value=0.0183563232421875
+2017-04-06 19:08:57,387 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:08:57,391 MainThread timer.py INFO action=timer value=0.00401616096496582
+2017-04-06 19:08:57,392 MainThread utils.py INFO action=utilization value=[1.0066858655804689, 0.99509878006395669, 0.99821535435557418]
+2017-04-06 19:08:57,392 MainThread kfold.py INFO action=kfold index=4 counter=[14625109426083.072, 14456772510464.752, 14502050031097.41] rmse=9.89475748991698e+18 rsquarred=-9.055590159878956e+28
+2017-04-06 19:08:57,504 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:57,601 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:08:58,756 MainThread timer.py INFO action=timer value=1.1547338962554932
+2017-04-06 19:08:58,756 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:08:58,780 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:08:58,798 MainThread timer.py INFO action=timer value=0.018182039260864258
+2017-04-06 19:08:58,798 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:08:58,803 MainThread timer.py INFO action=timer value=0.0038526058197021484
+2017-04-06 19:08:58,803 MainThread utils.py INFO action=utilization value=[1.0044094234573786, 0.98971415143429187, 1.0058764251083299]
+2017-04-06 19:08:58,803 MainThread kfold.py INFO action=kfold index=5 counter=[3149045233595.2949, 3102972312294.5405, 3153644607564.4307] rmse=1.8986423106462634e+17 rsquarred=-1.8854532950878614e+25
+2017-04-06 19:08:58,914 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:08:59,017 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:09:00,178 MainThread timer.py INFO action=timer value=1.1604514122009277
+2017-04-06 19:09:00,178 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:09:00,206 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:09:00,224 MainThread timer.py INFO action=timer value=0.017618656158447266
+2017-04-06 19:09:00,224 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:09:00,228 MainThread timer.py INFO action=timer value=0.0037326812744140625
+2017-04-06 19:09:00,228 MainThread utils.py INFO action=utilization value=[0, 0, 0]
+2017-04-06 19:09:00,228 MainThread kfold.py INFO action=kfold index=6 counter=[0, 0, 0] rmse=8.537666198171552e+18 rsquarred=-3.243792556127944e+29
+2017-04-06 19:09:00,342 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:09:00,440 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:09:01,598 MainThread timer.py INFO action=timer value=1.157562017440796
+2017-04-06 19:09:01,598 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:09:01,621 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:09:01,640 MainThread timer.py INFO action=timer value=0.01798105239868164
+2017-04-06 19:09:01,640 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:09:01,644 MainThread timer.py INFO action=timer value=0.003976345062255859
+2017-04-06 19:09:01,645 MainThread utils.py INFO action=utilization value=[0.98593870687561957, 1.0110729072691431, 1.0029883858552375]
+2017-04-06 19:09:01,645 MainThread kfold.py INFO action=kfold index=7 counter=[2671676244104.2939, 2739784378654.29, 2717877110326.2915] rmse=2496712618940018.5 rsquarred=-2.2369449602647799e+21
+2017-04-06 19:09:01,757 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:09:01,854 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:09:03,002 MainThread timer.py INFO action=timer value=1.148144245147705
+2017-04-06 19:09:03,002 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:09:03,026 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:09:03,044 MainThread timer.py INFO action=timer value=0.017956256866455078
+2017-04-06 19:09:03,044 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:09:03,048 MainThread timer.py INFO action=timer value=0.0038022994995117188
+2017-04-06 19:09:03,049 MainThread utils.py INFO action=utilization value=[0, 0, 0]
+2017-04-06 19:09:03,049 MainThread kfold.py INFO action=kfold index=8 counter=[0, 0, 0] rmse=2.0434819831055514e+17 rsquarred=-6.386114228526917e+24
+2017-04-06 19:09:03,161 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:09:03,260 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:09:04,502 MainThread timer.py INFO action=timer value=1.2416269779205322
+2017-04-06 19:09:04,502 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:09:04,530 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:09:04,540 MainThread timer.py INFO action=timer value=0.00913095474243164
+2017-04-06 19:09:04,540 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:09:04,544 MainThread timer.py INFO action=timer value=0.0037491321563720703
+2017-04-06 19:09:04,544 MainThread utils.py INFO action=utilization value=[0, 0, 0]
+2017-04-06 19:09:04,544 MainThread kfold.py INFO action=kfold index=9 counter=[0, 0, 0] rmse=1.061309834794326e+19 rsquarred=-1.3657694913871457e+28
+2017-04-06 19:09:04,656 MainThread sgd.py INFO action=init kwargs=loss=squared_epsilon_insensitive,fit_intercept=1
+2017-04-06 19:09:04,755 MainThread sgd.py INFO action=learning status=start
+2017-04-06 19:09:05,901 MainThread timer.py INFO action=timer value=1.1462912559509277
+2017-04-06 19:09:05,902 MainThread sgd.py INFO action=learning status=end
+2017-04-06 19:09:05,928 MainThread sgd.py INFO action=predict status=start
+2017-04-06 19:09:05,937 MainThread timer.py INFO action=timer value=0.008394956588745117
+2017-04-06 19:09:05,937 MainThread sgd.py INFO action=predict status=end
+2017-04-06 19:09:05,942 MainThread timer.py INFO action=timer value=0.003812551498413086
+2017-04-06 19:09:05,942 MainThread utils.py INFO action=utilization value=[0.80264103732603531, 0.7629238800450111, 1.434435082628954]
+2017-04-06 19:09:05,942 MainThread kfold.py INFO action=kfold index=10 counter=[6.4867616943323529e+19, 6.1657766929715651e+19, 1.1592776987833364e+20] rmse=2.1046036143906092e+18 rsquarred=-2.4442681254308217e+27
+2017-04-06 19:09:05,954 MainThread kfold.py INFO action=validate status=end
+2017-04-06 19:09:05,954 MainThread limython.py INFO action=main status=end

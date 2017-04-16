@@ -1,0 +1,9 @@
+2017-04-05 05:32:47,077 MainThread limython.py INFO action=main status=start
+2017-04-05 05:32:47,079 MainThread limython.py INFO action=args values="Namespace(arguments='solver=svd,normalize=False,fit_intercept=True', features='*', k_folds=10, limit='10000', model='ridge', node_count='3', processor='best-counter', run='false', url='false', url_limit=None)"
+2017-04-05 05:32:52,636 MainThread selector.py INFO action=selecting-model value=ridge
+2017-04-05 05:32:52,636 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-05 05:32:52,637 MainThread kfold.py INFO action=init
+2017-04-05 05:32:52,637 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-05 05:32:55,555 MainThread ridge.py INFO action=init kwargs=solver=svd,normalize=False,fit_intercept=True
+2017-04-05 05:32:56,533 MainThread ridge.py INFO action=learning status=start
+2017-04-05 06:16:15,059 MainThread limython.py INFO action=end-with-exception

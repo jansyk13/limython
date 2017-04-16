@@ -1,0 +1,141 @@
+2017-04-04 21:58:06,202 MainThread limython.py INFO action=main status=start
+2017-04-04 21:58:06,204 MainThread limython.py INFO action=args values="Namespace(arguments='normalize=True,fit_intercept=True', features='*', k_folds=10, limit='10000', model='ols', node_count='3', processor='best-counter', run='false', url='true', url_limit=None)"
+2017-04-04 21:58:07,780 MainThread url.py INFO action=url_parse status=start
+2017-04-04 21:58:08,175 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-04 21:58:08,175 MainThread url.py INFO action=url_parse count=0
+2017-04-04 21:58:13,882 MainThread url.py INFO action=url_parse count=100
+2017-04-04 21:58:21,231 MainThread url.py INFO action=url_parse count=200
+2017-04-04 21:58:29,537 MainThread url.py INFO action=url_parse count=300
+2017-04-04 21:58:39,077 MainThread url.py INFO action=url_parse count=400
+2017-04-04 21:58:49,634 MainThread url.py INFO action=url_parse count=500
+2017-04-04 21:59:02,403 MainThread url.py INFO action=url_parse count=600
+2017-04-04 21:59:17,155 MainThread url.py INFO action=url_parse count=700
+2017-04-04 21:59:33,009 MainThread url.py INFO action=url_parse count=800
+2017-04-04 21:59:50,274 MainThread url.py INFO action=url_parse count=900
+2017-04-04 22:00:08,795 MainThread url.py INFO action=url_parse count=1000
+2017-04-04 22:00:28,859 MainThread url.py INFO action=url_parse count=1100
+2017-04-04 22:00:50,277 MainThread url.py INFO action=url_parse count=1200
+2017-04-04 22:01:13,317 MainThread url.py INFO action=url_parse count=1300
+2017-04-04 22:01:37,796 MainThread url.py INFO action=url_parse count=1400
+2017-04-04 22:02:04,116 MainThread url.py INFO action=url_parse count=1500
+2017-04-04 22:02:31,482 MainThread url.py INFO action=url_parse count=1600
+2017-04-04 22:03:00,254 MainThread url.py INFO action=url_parse count=1700
+2017-04-04 22:03:30,617 MainThread url.py INFO action=url_parse count=1800
+2017-04-04 22:04:01,919 MainThread url.py INFO action=url_parse count=1900
+2017-04-04 22:04:34,702 MainThread url.py INFO action=url_parse count=2000
+2017-04-04 22:05:09,169 MainThread url.py INFO action=url_parse count=2100
+2017-04-04 22:05:45,363 MainThread url.py INFO action=url_parse count=2200
+2017-04-04 22:06:22,585 MainThread url.py INFO action=url_parse count=2300
+2017-04-04 22:07:01,481 MainThread url.py INFO action=url_parse count=2400
+2017-04-04 22:07:41,447 MainThread url.py INFO action=url_parse count=2500
+2017-04-04 22:08:23,292 MainThread url.py INFO action=url_parse count=2600
+2017-04-04 22:09:06,823 MainThread url.py INFO action=url_parse count=2700
+2017-04-04 22:09:50,433 MainThread url.py INFO action=url_parse count=2800
+2017-04-04 22:10:36,822 MainThread url.py INFO action=url_parse count=2900
+2017-04-04 22:10:43,354 MainThread url.py INFO action=url_parse status=end
+2017-04-04 22:10:43,362 MainThread selector.py INFO action=selecting-model value=ols
+2017-04-04 22:10:43,362 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-04 22:10:43,362 MainThread kfold.py INFO action=init
+2017-04-04 22:10:43,362 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-04 22:10:44,266 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-04 22:10:44,514 MainThread ols.py INFO action=learning status=start
+2017-04-05 00:16:11,488 MainThread timer.py INFO action=timer value=7526.973777770996
+2017-04-05 00:16:11,488 MainThread ols.py INFO action=learning status=end
+2017-04-05 00:16:11,556 MainThread ols.py INFO action=predict status=start
+2017-04-05 00:16:11,611 MainThread timer.py INFO action=timer value=0.0551600456237793
+2017-04-05 00:16:11,611 MainThread ols.py INFO action=predict status=end
+2017-04-05 00:16:11,616 MainThread timer.py INFO action=timer value=0.0038118362426757812
+2017-04-05 00:16:11,616 MainThread utils.py INFO action=utilization value=[0.99950624926623899, 1.0019250260827564, 0.99856872465100499]
+2017-04-05 00:16:11,616 MainThread kfold.py INFO action=kfold index=1 counter=[17495257.057951245, 17537595.084553733, 17478846.721193753] rmse=133104.8206523383 rsquarred=-11.683581217884083
+2017-04-05 00:16:11,916 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 00:16:12,144 MainThread ols.py INFO action=learning status=start
+2017-04-05 02:21:59,741 MainThread timer.py INFO action=timer value=7547.59619474411
+2017-04-05 02:21:59,741 MainThread ols.py INFO action=learning status=end
+2017-04-05 02:21:59,813 MainThread ols.py INFO action=predict status=start
+2017-04-05 02:21:59,870 MainThread timer.py INFO action=timer value=0.05684494972229004
+2017-04-05 02:21:59,870 MainThread ols.py INFO action=predict status=end
+2017-04-05 02:21:59,875 MainThread timer.py INFO action=timer value=0.003954410552978516
+2017-04-05 02:21:59,875 MainThread utils.py INFO action=utilization value=[0.99881695465398823, 1.0025639528390484, 0.9986190925069629]
+2017-04-05 02:21:59,875 MainThread kfold.py INFO action=kfold index=2 counter=[13135020.104460496, 13184295.295738354, 13132418.102895565] rmse=115561.2657838758 rsquarred=-1.0543429217642268
+2017-04-05 02:22:00,174 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 02:22:00,411 MainThread ols.py INFO action=learning status=start
+2017-04-05 04:25:20,201 MainThread timer.py INFO action=timer value=7399.789483547211
+2017-04-05 04:25:20,201 MainThread ols.py INFO action=learning status=end
+2017-04-05 04:25:20,267 MainThread ols.py INFO action=predict status=start
+2017-04-05 04:25:20,322 MainThread timer.py INFO action=timer value=0.054233551025390625
+2017-04-05 04:25:20,322 MainThread ols.py INFO action=predict status=end
+2017-04-05 04:25:20,326 MainThread timer.py INFO action=timer value=0.0037555694580078125
+2017-04-05 04:25:20,326 MainThread utils.py INFO action=utilization value=[0.99872096517828124, 1.0026467185468868, 0.99863231627483207]
+2017-04-05 04:25:20,326 MainThread kfold.py INFO action=kfold index=3 counter=[24188018.66990472, 24283096.473499559, 24185871.682501372] rmse=143152.8209998889 rsquarred=-52.72777000344727
+2017-04-05 04:25:20,623 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 04:25:20,852 MainThread ols.py INFO action=learning status=start
+2017-04-05 06:33:11,728 MainThread timer.py INFO action=timer value=7670.875111103058
+2017-04-05 06:33:11,728 MainThread ols.py INFO action=learning status=end
+2017-04-05 06:33:11,782 MainThread ols.py INFO action=predict status=start
+2017-04-05 06:33:11,839 MainThread timer.py INFO action=timer value=0.05690455436706543
+2017-04-05 06:33:11,839 MainThread ols.py INFO action=predict status=end
+2017-04-05 06:33:11,844 MainThread timer.py INFO action=timer value=0.0038299560546875
+2017-04-05 06:33:11,844 MainThread utils.py INFO action=utilization value=[0.99918892753826671, 1.0006357426142258, 1.000175329847508]
+2017-04-05 06:33:11,844 MainThread kfold.py INFO action=kfold index=4 counter=[20203253.041475195, 20232507.139752522, 20223197.753536202] rmse=143165.01040825475 rsquarred=-17.957463482848897
+2017-04-05 06:33:12,167 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 06:33:12,404 MainThread ols.py INFO action=learning status=start
+2017-04-05 08:44:34,336 MainThread timer.py INFO action=timer value=7881.931587696075
+2017-04-05 08:44:34,336 MainThread ols.py INFO action=learning status=end
+2017-04-05 08:44:34,412 MainThread ols.py INFO action=predict status=start
+2017-04-05 08:44:34,467 MainThread timer.py INFO action=timer value=0.05471992492675781
+2017-04-05 08:44:34,467 MainThread ols.py INFO action=predict status=end
+2017-04-05 08:44:34,471 MainThread timer.py INFO action=timer value=0.0037488937377929688
+2017-04-05 08:44:34,471 MainThread utils.py INFO action=utilization value=[0.99624900970539665, 1.0096233892985511, 0.99412760099605246]
+2017-04-05 08:44:34,471 MainThread kfold.py INFO action=kfold index=5 counter=[18713542.351865452, 18964766.710944545, 18673693.808638625] rmse=154676.11997873543 rsquarred=-11.513419613723194
+2017-04-05 08:44:34,765 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 08:44:34,995 MainThread ols.py INFO action=learning status=start
+2017-04-05 10:47:23,965 MainThread timer.py INFO action=timer value=7368.969403505325
+2017-04-05 10:47:23,965 MainThread ols.py INFO action=learning status=end
+2017-04-05 10:47:24,035 MainThread ols.py INFO action=predict status=start
+2017-04-05 10:47:24,091 MainThread timer.py INFO action=timer value=0.05553126335144043
+2017-04-05 10:47:24,091 MainThread ols.py INFO action=predict status=end
+2017-04-05 10:47:24,095 MainThread timer.py INFO action=timer value=0.003725767135620117
+2017-04-05 10:47:24,095 MainThread utils.py INFO action=utilization value=[0.99968945127015341, 1.0004892285510725, 0.9998213201787739]
+2017-04-05 10:47:24,095 MainThread kfold.py INFO action=kfold index=6 counter=[21786639.33048917, 21804069.20247788, 21789513.203317743] rmse=125829.32284893957 rsquarred=-69.45932038056034
+2017-04-05 10:47:24,401 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 10:47:24,678 MainThread ols.py INFO action=learning status=start
+2017-04-05 12:58:50,377 MainThread timer.py INFO action=timer value=7885.699115514755
+2017-04-05 12:58:50,377 MainThread ols.py INFO action=learning status=end
+2017-04-05 12:58:50,448 MainThread ols.py INFO action=predict status=start
+2017-04-05 12:58:50,489 MainThread timer.py INFO action=timer value=0.039983272552490234
+2017-04-05 12:58:50,489 MainThread ols.py INFO action=predict status=end
+2017-04-05 12:58:50,493 MainThread timer.py INFO action=timer value=0.003820180892944336
+2017-04-05 12:58:50,493 MainThread utils.py INFO action=utilization value=[1.0016312314349065, 0.99977141629408195, 0.99859735227101143]
+2017-04-05 12:58:50,494 MainThread kfold.py INFO action=kfold index=7 counter=[19413284.852713071, 19377238.531503126, 19354483.211381428] rmse=132632.93447047973 rsquarred=-5.31278418932362
+2017-04-05 12:58:50,742 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 12:58:50,948 MainThread ols.py INFO action=learning status=start
+2017-04-05 15:12:17,732 MainThread timer.py INFO action=timer value=8006.783660888672
+2017-04-05 15:12:17,732 MainThread ols.py INFO action=learning status=end
+2017-04-05 15:12:17,791 MainThread ols.py INFO action=predict status=start
+2017-04-05 15:12:17,845 MainThread timer.py INFO action=timer value=0.05413031578063965
+2017-04-05 15:12:17,845 MainThread ols.py INFO action=predict status=end
+2017-04-05 15:12:17,849 MainThread timer.py INFO action=timer value=0.003730297088623047
+2017-04-05 15:12:17,850 MainThread utils.py INFO action=utilization value=[0.99922960668748029, 0.99956184207760768, 1.001208551234912]
+2017-04-05 15:12:17,850 MainThread kfold.py INFO action=kfold index=8 counter=[15247805.651652951, 15252875.418026324, 15278003.477710837] rmse=110786.01939581169 rsquarred=-0.8770030266979603
+2017-04-05 15:12:18,101 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 15:12:18,335 MainThread ols.py INFO action=learning status=start
+2017-04-05 17:22:36,079 MainThread timer.py INFO action=timer value=7817.744094371796
+2017-04-05 17:22:36,079 MainThread ols.py INFO action=learning status=end
+2017-04-05 17:22:36,137 MainThread ols.py INFO action=predict status=start
+2017-04-05 17:22:36,194 MainThread timer.py INFO action=timer value=0.05672168731689453
+2017-04-05 17:22:36,194 MainThread ols.py INFO action=predict status=end
+2017-04-05 17:22:36,199 MainThread timer.py INFO action=timer value=0.0038030147552490234
+2017-04-05 17:22:36,199 MainThread utils.py INFO action=utilization value=[1.0011375574194852, 0.99822737588470867, 1.0006350666958064]
+2017-04-05 17:22:36,199 MainThread kfold.py INFO action=kfold index=9 counter=[16621546.801154543, 16573230.0456581, 16613204.118354486] rmse=110527.40924487231 rsquarred=-0.48126584980646636
+2017-04-05 17:22:36,505 MainThread ols.py INFO action=init kwargs=normalize=True,fit_intercept=True
+2017-04-05 17:22:36,734 MainThread ols.py INFO action=learning status=start
+2017-04-05 19:41:02,691 MainThread timer.py INFO action=timer value=8305.956784963608
+2017-04-05 19:41:02,691 MainThread ols.py INFO action=learning status=end
+2017-04-05 19:41:02,757 MainThread ols.py INFO action=predict status=start
+2017-04-05 19:41:02,814 MainThread timer.py INFO action=timer value=0.057080984115600586
+2017-04-05 19:41:02,814 MainThread ols.py INFO action=predict status=end
+2017-04-05 19:41:02,818 MainThread timer.py INFO action=timer value=0.003778219223022461
+2017-04-05 19:41:02,818 MainThread utils.py INFO action=utilization value=[1.0111915863975713, 0.99707488852776405, 0.99173352507466428]
+2017-04-05 19:41:02,819 MainThread kfold.py INFO action=kfold index=10 counter=[21127701.38044288, 20832748.988548715, 20721147.256968312] rmse=133815.18562037213 rsquarred=-8.88141233947336
+2017-04-05 19:41:02,834 MainThread kfold.py INFO action=validate status=end
+2017-04-05 19:41:02,834 MainThread limython.py INFO action=main status=end

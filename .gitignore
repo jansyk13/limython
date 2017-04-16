@@ -3,5 +3,3 @@ build
 *.swp
 __pycache__
 .cache
-results
-_results

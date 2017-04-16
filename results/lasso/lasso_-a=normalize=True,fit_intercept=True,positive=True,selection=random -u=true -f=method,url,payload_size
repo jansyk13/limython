@@ -1,0 +1,141 @@
+2017-04-04 21:29:23,746 MainThread limython.py INFO action=main status=start
+2017-04-04 21:29:23,749 MainThread limython.py INFO action=args values="Namespace(arguments='normalize=True,fit_intercept=True,positive=True,selection=random', features='method,url,payload_size', k_folds=10, limit='10000', model='lasso', node_count='3', processor='best-counter', run='false', url='true', url_limit=None)"
+2017-04-04 21:29:23,860 MainThread url.py INFO action=url_parse status=start
+2017-04-04 21:29:24,962 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-04 21:29:24,962 MainThread url.py INFO action=url_parse count=0
+2017-04-04 21:29:26,984 MainThread url.py INFO action=url_parse count=100
+2017-04-04 21:29:31,178 MainThread url.py INFO action=url_parse count=200
+2017-04-04 21:29:38,258 MainThread url.py INFO action=url_parse count=300
+2017-04-04 21:29:49,957 MainThread url.py INFO action=url_parse count=400
+2017-04-04 21:30:07,145 MainThread url.py INFO action=url_parse count=500
+2017-04-04 21:30:29,019 MainThread url.py INFO action=url_parse count=600
+2017-04-04 21:30:54,373 MainThread url.py INFO action=url_parse count=700
+2017-04-04 21:31:21,899 MainThread url.py INFO action=url_parse count=800
+2017-04-04 21:31:54,162 MainThread url.py INFO action=url_parse count=900
+2017-04-04 21:32:30,845 MainThread url.py INFO action=url_parse count=1000
+2017-04-04 21:33:10,666 MainThread url.py INFO action=url_parse count=1100
+2017-04-04 21:33:55,841 MainThread url.py INFO action=url_parse count=1200
+2017-04-04 21:34:41,129 MainThread url.py INFO action=url_parse count=1300
+2017-04-04 21:35:28,267 MainThread url.py INFO action=url_parse count=1400
+2017-04-04 21:36:12,246 MainThread url.py INFO action=url_parse count=1500
+2017-04-04 21:36:55,251 MainThread url.py INFO action=url_parse count=1600
+2017-04-04 21:37:41,253 MainThread url.py INFO action=url_parse count=1700
+2017-04-04 21:38:30,010 MainThread url.py INFO action=url_parse count=1800
+2017-04-04 21:39:21,638 MainThread url.py INFO action=url_parse count=1900
+2017-04-04 21:40:15,574 MainThread url.py INFO action=url_parse count=2000
+2017-04-04 21:41:12,013 MainThread url.py INFO action=url_parse count=2100
+2017-04-04 21:42:11,458 MainThread url.py INFO action=url_parse count=2200
+2017-04-04 21:43:16,417 MainThread url.py INFO action=url_parse count=2300
+2017-04-04 21:44:24,044 MainThread url.py INFO action=url_parse count=2400
+2017-04-04 21:45:35,113 MainThread url.py INFO action=url_parse count=2500
+2017-04-04 21:46:48,579 MainThread url.py INFO action=url_parse count=2600
+2017-04-04 21:48:05,301 MainThread url.py INFO action=url_parse count=2700
+2017-04-04 21:49:24,822 MainThread url.py INFO action=url_parse count=2800
+2017-04-04 21:50:49,191 MainThread url.py INFO action=url_parse count=2900
+2017-04-04 21:51:00,831 MainThread url.py INFO action=url_parse status=end
+2017-04-04 21:51:00,832 MainThread selector.py INFO action=selecting-model value=lasso
+2017-04-04 21:51:00,832 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-04 21:51:00,833 MainThread kfold.py INFO action=init
+2017-04-04 21:51:00,833 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-04 21:51:01,777 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:01,955 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:05,699 MainThread timer.py INFO action=timer value=3.743527889251709
+2017-04-04 21:51:05,700 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:05,766 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:05,793 MainThread timer.py INFO action=timer value=0.025757312774658203
+2017-04-04 21:51:05,793 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:05,802 MainThread timer.py INFO action=timer value=0.007825613021850586
+2017-04-04 21:51:05,803 MainThread utils.py INFO action=utilization value=[0.9444099669424999, 1.1100412507065582, 0.94554878235094175]
+2017-04-04 21:51:05,803 MainThread kfold.py INFO action=kfold index=1 counter=[1767236.9834512179, 2077176.2476798519, 1769368.0036411448] rmse=118.3490330501976 rsquarred=0.9999899727059005
+2017-04-04 21:51:05,985 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:06,172 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:09,271 MainThread timer.py INFO action=timer value=3.0993263721466064
+2017-04-04 21:51:09,272 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:09,342 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:09,365 MainThread timer.py INFO action=timer value=0.022691011428833008
+2017-04-04 21:51:09,365 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:09,374 MainThread timer.py INFO action=timer value=0.007920503616333008
+2017-04-04 21:51:09,375 MainThread utils.py INFO action=utilization value=[0.78301539449412827, 0.77171253283689667, 1.4452720726689749]
+2017-04-04 21:51:09,375 MainThread kfold.py INFO action=kfold index=2 counter=[1824082.6758883859, 1797751.9622371695, 3366850.4709335533] rmse=441.9450321781083 rsquarred=0.9999699541238626
+2017-04-04 21:51:09,553 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:09,717 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:12,904 MainThread timer.py INFO action=timer value=3.1862916946411133
+2017-04-04 21:51:12,905 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:12,979 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:13,003 MainThread timer.py INFO action=timer value=0.024267911911010742
+2017-04-04 21:51:13,003 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:13,009 MainThread timer.py INFO action=timer value=0.004166841506958008
+2017-04-04 21:51:13,009 MainThread utils.py INFO action=utilization value=[0.99919407781778558, 1.0031877559588147, 0.99761816622340005]
+2017-04-04 21:51:13,009 MainThread kfold.py INFO action=kfold index=3 counter=[1557160.7737369731, 1563384.5885915637, 1554704.8467332686] rmse=49.3741211383171 rsquarred=0.9999936085742159
+2017-04-04 21:51:13,198 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:13,351 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:16,385 MainThread timer.py INFO action=timer value=3.0340499877929688
+2017-04-04 21:51:16,386 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:16,451 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:16,473 MainThread timer.py INFO action=timer value=0.021604299545288086
+2017-04-04 21:51:16,474 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:16,478 MainThread timer.py INFO action=timer value=0.0038521289825439453
+2017-04-04 21:51:16,478 MainThread utils.py INFO action=utilization value=[0.99445236402481541, 0.99994429139753349, 1.0056033445776515]
+2017-04-04 21:51:16,478 MainThread kfold.py INFO action=kfold index=4 counter=[1882310.08223309, 1892705.2611662673, 1903416.7776171081] rmse=55.92216412648433 rsquarred=0.9999971074931954
+2017-04-04 21:51:16,630 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:16,758 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:19,768 MainThread timer.py INFO action=timer value=3.0097525119781494
+2017-04-04 21:51:19,769 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:19,837 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:19,864 MainThread timer.py INFO action=timer value=0.025682449340820312
+2017-04-04 21:51:19,864 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:19,873 MainThread timer.py INFO action=timer value=0.007621288299560547
+2017-04-04 21:51:19,873 MainThread utils.py INFO action=utilization value=[0.92905041346199835, 1.155870044020765, 0.91507954251723633]
+2017-04-04 21:51:19,874 MainThread kfold.py INFO action=kfold index=5 counter=[1619674.5968542048, 2015104.1541318486, 1595318.2600642149] rmse=222.7139089574199 rsquarred=0.999974056763761
+2017-04-04 21:51:20,062 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:20,215 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:23,169 MainThread timer.py INFO action=timer value=2.953599452972412
+2017-04-04 21:51:23,169 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:23,236 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:23,261 MainThread timer.py INFO action=timer value=0.025088787078857422
+2017-04-04 21:51:23,262 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:23,266 MainThread timer.py INFO action=timer value=0.003945589065551758
+2017-04-04 21:51:23,266 MainThread utils.py INFO action=utilization value=[0.99607508746012674, 1.0000758376684098, 1.0038490748714635]
+2017-04-04 21:51:23,267 MainThread kfold.py INFO action=kfold index=6 counter=[1377149.7887676528, 1382681.1311068113, 1387897.919361606] rmse=44.423651569352536 rsquarred=0.999991217801698
+2017-04-04 21:51:23,433 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:23,580 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:26,721 MainThread timer.py INFO action=timer value=3.140848159790039
+2017-04-04 21:51:26,721 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:26,779 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:26,802 MainThread timer.py INFO action=timer value=0.022834062576293945
+2017-04-04 21:51:26,802 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:26,807 MainThread timer.py INFO action=timer value=0.0038492679595947266
+2017-04-04 21:51:26,807 MainThread utils.py INFO action=utilization value=[0.99989584092177364, 1.0002370958790008, 0.9998670631992258]
+2017-04-04 21:51:26,807 MainThread kfold.py INFO action=kfold index=7 counter=[2320138.2733841361, 2320930.1145488266, 2320071.4981333832] rmse=195.90338595900948 rsquarred=0.9999862278396511
+2017-04-04 21:51:26,955 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:27,109 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:30,022 MainThread timer.py INFO action=timer value=2.9120590686798096
+2017-04-04 21:51:30,022 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:30,090 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:30,112 MainThread timer.py INFO action=timer value=0.020931720733642578
+2017-04-04 21:51:30,112 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:30,120 MainThread timer.py INFO action=timer value=0.007779836654663086
+2017-04-04 21:51:30,121 MainThread utils.py INFO action=utilization value=[1.0028344573620882, 0.99861573335413656, 0.99854980928377512]
+2017-04-04 21:51:30,121 MainThread kfold.py INFO action=kfold index=8 counter=[3004210.0357153285, 2991571.9248989732, 2991374.4349221173] rmse=170.52013876349446 rsquarred=0.9999955532121404
+2017-04-04 21:51:30,314 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:30,756 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:34,239 MainThread timer.py INFO action=timer value=3.4831714630126953
+2017-04-04 21:51:34,239 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:34,309 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:34,325 MainThread timer.py INFO action=timer value=0.016018390655517578
+2017-04-04 21:51:34,326 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:34,335 MainThread timer.py INFO action=timer value=0.00800013542175293
+2017-04-04 21:51:34,336 MainThread utils.py INFO action=utilization value=[1.0855520222241875, 0.95756911134672185, 0.95687886642909059]
+2017-04-04 21:51:34,336 MainThread kfold.py INFO action=kfold index=9 counter=[4562330.5012349226, 4024447.1700088992, 4021546.2261788845] rmse=308.6464830532581 rsquarred=0.9999884491034292
+2017-04-04 21:51:34,527 MainThread lasso.py INFO action=init kwargs=normalize=True,fit_intercept=True,positive=True,selection=random
+2017-04-04 21:51:34,651 MainThread lasso.py INFO action=learning status=start
+2017-04-04 21:51:37,730 MainThread timer.py INFO action=timer value=3.078239679336548
+2017-04-04 21:51:37,730 MainThread lasso.py INFO action=learning status=end
+2017-04-04 21:51:37,799 MainThread lasso.py INFO action=predict status=start
+2017-04-04 21:51:37,806 MainThread timer.py INFO action=timer value=0.007529735565185547
+2017-04-04 21:51:37,807 MainThread lasso.py INFO action=predict status=end
+2017-04-04 21:51:37,811 MainThread timer.py INFO action=timer value=0.003888368606567383
+2017-04-04 21:51:37,811 MainThread utils.py INFO action=utilization value=[1.4333175616296168, 0.8030357727923364, 0.76364666557804728]
+2017-04-04 21:51:37,812 MainThread kfold.py INFO action=kfold index=10 counter=[2360229.3911331045, 1322350.8061401502, 1257489.1655474273] rmse=73.73247045667708 rsquarred=0.9999969999686608
+2017-04-04 21:51:37,844 MainThread kfold.py INFO action=validate status=end
+2017-04-04 21:51:37,844 MainThread limython.py INFO action=main status=end

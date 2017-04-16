@@ -1,0 +1,49 @@
+2017-04-07 08:57:55,282 MainThread final.py INFO action=main status=start
+2017-04-07 08:57:55,283 MainThread final.py INFO action=args values="Namespace(arguments='criterion=mse,splitter=best,max_depth=20,max_features=log2', features='*', limit='1000', model='tree', processor='best-counter', url='true')"
+2017-04-07 08:57:55,308 MainThread url.py INFO action=url_parse status=start
+2017-04-07 08:57:55,319 MainThread url.py INFO action=url_parse values_size=627
+2017-04-07 08:57:55,320 MainThread url.py INFO action=url_parse count=0
+2017-04-07 08:57:55,516 MainThread url.py INFO action=url_parse count=100
+2017-04-07 08:57:55,778 MainThread url.py INFO action=url_parse count=200
+2017-04-07 08:57:56,108 MainThread url.py INFO action=url_parse count=300
+2017-04-07 08:57:56,510 MainThread url.py INFO action=url_parse count=400
+2017-04-07 08:57:56,984 MainThread url.py INFO action=url_parse count=500
+2017-04-07 08:57:57,532 MainThread url.py INFO action=url_parse count=600
+2017-04-07 08:57:57,694 MainThread url.py INFO action=url_parse status=end
+2017-04-07 08:57:57,695 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-07 08:57:57,695 MainThread selector.py INFO action=selecting-model value=tree
+2017-04-07 08:57:57,695 MainThread tree.py INFO action=init kwargs=criterion=mse,splitter=best,max_depth=20,max_features=log2
+2017-04-07 08:57:57,703 MainThread tree.py INFO action=learning status=start
+2017-04-07 08:57:57,715 MainThread timer.py INFO action=timer value=0.01125192642211914
+2017-04-07 08:57:57,715 MainThread tree.py INFO action=learning status=end
+2017-04-07 08:57:57,719 MainThread tree.py INFO action=predict status=start
+2017-04-07 08:57:57,727 MainThread timer.py INFO action=timer value=0.007771730422973633
+2017-04-07 08:57:57,727 MainThread tree.py INFO action=predict status=end
+2017-04-07 08:57:57,731 MainThread timer.py INFO action=timer value=0.0038089752197265625
+2017-04-07 08:57:57,731 MainThread utils.py INFO action=utilization value=[0.78066687247329325, 0.78215794871214361, 1.4371751788145632]
+2017-04-07 08:57:57,731 MainThread final.py INFO action=results node_count=3 counter=[1284691.6877934218, 1287145.4530516407, 2365063.8591549271] rmse=14766.893336468482 rsquarred=0.8796665144954167
+2017-04-07 08:57:57,731 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-07 08:57:57,731 MainThread selector.py INFO action=selecting-model value=tree
+2017-04-07 08:57:57,731 MainThread tree.py INFO action=init kwargs=criterion=mse,splitter=best,max_depth=20,max_features=log2
+2017-04-07 08:57:57,735 MainThread tree.py INFO action=learning status=start
+2017-04-07 08:57:57,741 MainThread timer.py INFO action=timer value=0.005186557769775391
+2017-04-07 08:57:57,741 MainThread tree.py INFO action=learning status=end
+2017-04-07 08:57:57,745 MainThread tree.py INFO action=predict status=start
+2017-04-07 08:57:57,749 MainThread timer.py INFO action=timer value=0.003813028335571289
+2017-04-07 08:57:57,749 MainThread tree.py INFO action=predict status=end
+2017-04-07 08:57:57,753 MainThread timer.py INFO action=timer value=0.003775358200073242
+2017-04-07 08:57:57,753 MainThread utils.py INFO action=utilization value=[0.99981098027402748, 1.0005269454745715, 0.99843382252874757, 1.0024521907251347, 0.99877606099751903]
+2017-04-07 08:57:57,753 MainThread final.py INFO action=results node_count=5 counter=[987193.56566516438, 987900.49552807049, 985833.78737519833, 989801.44456862076, 986171.7068629415] rmse=42422.62339628685 rsquarred=0.006876488257804181
+2017-04-07 08:57:57,753 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-07 08:57:57,753 MainThread selector.py INFO action=selecting-model value=tree
+2017-04-07 08:57:57,753 MainThread tree.py INFO action=init kwargs=criterion=mse,splitter=best,max_depth=20,max_features=log2
+2017-04-07 08:57:57,757 MainThread tree.py INFO action=learning status=start
+2017-04-07 08:57:57,762 MainThread timer.py INFO action=timer value=0.004900217056274414
+2017-04-07 08:57:57,762 MainThread tree.py INFO action=learning status=end
+2017-04-07 08:57:57,766 MainThread tree.py INFO action=predict status=start
+2017-04-07 08:57:57,770 MainThread timer.py INFO action=timer value=0.0037965774536132812
+2017-04-07 08:57:57,770 MainThread tree.py INFO action=predict status=end
+2017-04-07 08:57:57,775 MainThread timer.py INFO action=timer value=0.0039980411529541016
+2017-04-07 08:57:57,775 MainThread utils.py INFO action=utilization value=[3.1622119020689046, 0.74208173039520664, 0.73586546656095975, 0.88800215540702876, 0.73881515803623199, 0.74153885045619472, 0.77169420058846272, 0.73963697818652807, 0.74186670145407119, 0.73828685684641027]
+2017-04-07 08:57:57,775 MainThread final.py INFO action=results node_count=10 counter=[1561152.7101535872, 366358.40368698246, 363289.49577302678, 438397.87290311145, 364745.7292524231, 366090.38923560368, 380977.78705793805, 365151.45372460474, 366252.2460275304, 364484.91218518984] rmse=16973.832138252557 rsquarred=0.8410106527063993
+2017-04-07 08:57:57,775 MainThread final.py INFO action=main status=end
