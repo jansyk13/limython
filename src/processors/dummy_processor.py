@@ -5,7 +5,8 @@ class DummyProcessor:
 
     def __init__(self):
         log.info("action=init")
-        self.node_counters = []
+        self.real_node_counters = []
+        self.predict_node_counters = []
 
-    def process(self, data):
+    def process(self, predict, real):
         log.debug("hit")

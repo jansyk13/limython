@@ -24,16 +24,16 @@ class TestUtils(unittest.TestCase):
 
     def testCountUtilization(self):
         processor = s.SimpleRoundRobinProcessor(3)
-        processor.process(1)
-        processor.process(2)
+        processor.process(1,1)
+        processor.process(2,2)
         utilization = utils.count_utilization(processor)
 
         self.assertEqual(utilization, [1.0, 2.0, 0.0])
 
     def testCountUtilizationZeroes(self):
         processor = s.SimpleRoundRobinProcessor(3)
-        processor.process(0)
-        processor.process(0)
+        processor.process(0,0)
+        processor.process(0,0)
         utilization = utils.count_utilization(processor)
 
         self.assertEqual(utilization, [0.0, 0.0, 0.0])

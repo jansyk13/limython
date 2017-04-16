@@ -48,7 +48,7 @@ def main_wrapper():
             processor, dataframe, predictions)
 
         log.info("action=results counter=%s rmse=%s rsquarred=%s" %
-                 (processor.node_counters, rmse, rsquarred))
+                 (processor.real_node_counters, rmse, rsquarred))
 
     if (args.k_folds):
         validator = kfold.KfoldBaseline(ps.select_processor_supplier(

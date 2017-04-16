@@ -30,6 +30,6 @@ class KfoldBaseline:
                 processor, dataframe, predictions)
 
             log.info("action=kfold index=%s counter=%s rmse=%s rsquarred=%s" %
-                     (idx, processor.node_counters, rmse, rsquarred))
+                     (idx, processor.real_node_counters, rmse, rsquarred))
 
         log.info("action=validate-baseline status=end")

@@ -16,7 +16,7 @@ def process_and_compute_stats(processor, dataframe, predictions):
 
     t = timer.start()
     for idx, prediction in np.ndenumerate(predictions):
-        processor.process(prediction)
+        processor.process(prediction, real[idx])
     timer.stop(t)
     utilization = count_utilization(processor)
     log.info("action=utilization value=%s" % utilization)
@@ -27,13 +27,13 @@ def process_and_compute_stats(processor, dataframe, predictions):
 
 
 def count_utilization(processor):
-    if (len(processor.node_counters) > 0):
-        n = len(processor.node_counters)
-        total = reduce(lambda x, y: (x + y), processor.node_counters)
+    if (len(processor.real_node_counters) > 0):
+        n = len(processor.real_node_counters)
+        total = reduce(lambda x, y: (x + y), processor.real_node_counters)
         utilization = []
         if (total == 0):
-            return [0 for x in processor.node_counters]
-        for node_counter in processor.node_counters:
+            return [0 for x in processor.real_node_counters]
+        for node_counter in processor.real_node_counters:
             utilization.append(((100 * n / total) * node_counter) / 100)
         return utilization
     else:

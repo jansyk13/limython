@@ -70,7 +70,7 @@ def main_wrapper():
         processor, dataframe, predictions)
 
     log.info("action=results node_count=3 counter=%s rmse=%s rsquarred=%s" %
-             (processor.node_counters, rmse, rsquarred))
+             (processor.real_node_counters, rmse, rsquarred))
 
     processor = ps.select_processor(ah.ArgsHelper(5, args.processor))
     model = ls.select_model(args)
@@ -82,7 +82,7 @@ def main_wrapper():
         processor, dataframe, predictions)
 
     log.info("action=results node_count=5 counter=%s rmse=%s rsquarred=%s" %
-             (processor.node_counters, rmse, rsquarred))
+             (processor.real_node_counters, rmse, rsquarred))
 
     processor = ps.select_processor(ah.ArgsHelper(10, args.processor))
     model = ls.select_model(args)
@@ -94,7 +94,7 @@ def main_wrapper():
         processor, dataframe, predictions)
 
     log.info("action=results node_count=10 counter=%s rmse=%s rsquarred=%s" %
-             (processor.node_counters, rmse, rsquarred))
+             (processor.real_node_counters, rmse, rsquarred))
 
     log.info("action=main status=end")
 

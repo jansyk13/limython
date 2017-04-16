@@ -11,10 +11,11 @@ log.basicConfig(stream=sys.stdout, level=log.DEBUG,
 class TestDummyProcessor(unittest.TestCase):
 
     def testProcess(self):
-        predictions = np.array([1, 10, 10, 1, 10])
+        data = np.array([1, 10, 10, 1, 10])
         p = dp.DummyProcessor()
 
-        for idx, prediction in np.ndenumerate(predictions):
-            p.process(prediction)
+        for idx, prediction in np.ndenumerate(data):
+            p.process(prediction, prediction)
 
-        self.assertEqual(p.node_counters, [])
+        self.assertEqual(p.real_node_counters, [])
+        self.assertEqual(p.predict_node_counters, [])
