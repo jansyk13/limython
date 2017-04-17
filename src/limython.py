@@ -46,7 +46,7 @@ def process_args():
 def to_omit(url):
     omit = ["payload_size"]
     if (url and url == u'true'):
-        # omit url because it will parsed separate way
+        # omit url because it will be parsed separate way
         omit.append('url')
     return omit
 

@@ -28,6 +28,8 @@ def process_args():
                         help="ML model arguments - kwargs separated with comma")
     parser.add_argument("-u", "--url", default='false',
                         help="Flag whether url should be parsed into tree like indicators")
+    parser.add_argument("-ul", "--url-limit", type=int, default=None,
+                        help="Limit depth of tree hierarchy of dummy variable parsed from urls")
     parser.add_argument("-f", "--features", type=str, default='*',
                         help="List of features - comma separated")
 
@@ -39,7 +41,7 @@ def process_args():
 def to_omit(url):
     omit = ["payload_size"]
     if (url and url == u'true'):
-        # omit url because it will parsed separate way
+        # omit url because it will be parsed separate way
         omit.append('url')
     return omit
 
