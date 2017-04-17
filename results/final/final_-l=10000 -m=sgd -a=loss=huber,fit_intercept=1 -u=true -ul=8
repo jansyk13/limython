@@ -1,0 +1,72 @@
+2017-04-17 08:42:57,782 MainThread final.py INFO action=main status=start
+2017-04-17 08:42:57,783 MainThread final.py INFO action=args values="Namespace(arguments='loss=huber,fit_intercept=1', features='*', limit='10000', model='sgd', processor='best-counter', url='true', url_limit=8)"
+2017-04-17 08:42:59,373 MainThread url.py INFO action=url_parse status=start
+2017-04-17 08:42:59,865 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-17 08:42:59,865 MainThread url.py INFO action=url_parse count=0
+2017-04-17 08:43:06,778 MainThread url.py INFO action=url_parse count=100
+2017-04-17 08:43:15,076 MainThread url.py INFO action=url_parse count=200
+2017-04-17 08:43:24,572 MainThread url.py INFO action=url_parse count=300
+2017-04-17 08:43:35,271 MainThread url.py INFO action=url_parse count=400
+2017-04-17 08:43:49,028 MainThread url.py INFO action=url_parse count=500
+2017-04-17 08:44:04,986 MainThread url.py INFO action=url_parse count=600
+2017-04-17 08:44:22,659 MainThread url.py INFO action=url_parse count=700
+2017-04-17 08:44:42,011 MainThread url.py INFO action=url_parse count=800
+2017-04-17 08:45:03,110 MainThread url.py INFO action=url_parse count=900
+2017-04-17 08:45:25,897 MainThread url.py INFO action=url_parse count=1000
+2017-04-17 08:45:50,333 MainThread url.py INFO action=url_parse count=1100
+2017-04-17 08:46:16,479 MainThread url.py INFO action=url_parse count=1200
+2017-04-17 08:46:44,432 MainThread url.py INFO action=url_parse count=1300
+2017-04-17 08:47:14,091 MainThread url.py INFO action=url_parse count=1400
+2017-04-17 08:47:45,388 MainThread url.py INFO action=url_parse count=1500
+2017-04-17 08:48:18,388 MainThread url.py INFO action=url_parse count=1600
+2017-04-17 08:48:53,133 MainThread url.py INFO action=url_parse count=1700
+2017-04-17 08:49:29,512 MainThread url.py INFO action=url_parse count=1800
+2017-04-17 08:50:07,659 MainThread url.py INFO action=url_parse count=1900
+2017-04-17 08:50:47,449 MainThread url.py INFO action=url_parse count=2000
+2017-04-17 08:51:29,005 MainThread url.py INFO action=url_parse count=2100
+2017-04-17 08:52:12,175 MainThread url.py INFO action=url_parse count=2200
+2017-04-17 08:52:57,102 MainThread url.py INFO action=url_parse count=2300
+2017-04-17 08:53:43,688 MainThread url.py INFO action=url_parse count=2400
+2017-04-17 08:54:32,049 MainThread url.py INFO action=url_parse count=2500
+2017-04-17 08:55:21,807 MainThread url.py INFO action=url_parse count=2600
+2017-04-17 08:56:12,662 MainThread url.py INFO action=url_parse count=2700
+2017-04-17 08:57:05,306 MainThread url.py INFO action=url_parse count=2800
+2017-04-17 08:57:59,790 MainThread url.py INFO action=url_parse count=2900
+2017-04-17 08:58:07,469 MainThread url.py INFO action=url_parse status=end
+2017-04-17 08:58:07,474 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:58:07,474 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:58:07,474 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:58:08,105 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:58:12,678 MainThread timer.py INFO action=timer value=4.572496175765991
+2017-04-17 08:58:12,678 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:58:13,013 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:58:13,723 MainThread timer.py INFO action=timer value=0.7091870307922363
+2017-04-17 08:58:13,723 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:58:13,793 MainThread timer.py INFO action=timer value=0.049872398376464844
+2017-04-17 08:58:13,794 MainThread utils.py INFO action=utilization value=[1.1722311577757443, 0.91283898185200552, 0.91492986037225055]
+2017-04-17 08:58:13,794 MainThread final.py INFO action=results node_count=3 counter=[25729474, 20036037, 20081930] rmse=4032231.6805709833 rsquarred=-5253.94088342292
+2017-04-17 08:58:13,794 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:58:13,794 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:58:13,794 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:58:14,110 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:58:18,672 MainThread timer.py INFO action=timer value=4.561883926391602
+2017-04-17 08:58:18,673 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:58:19,009 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:58:19,720 MainThread timer.py INFO action=timer value=0.711585521697998
+2017-04-17 08:58:19,721 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:58:19,792 MainThread timer.py INFO action=timer value=0.050727128982543945
+2017-04-17 08:58:19,792 MainThread utils.py INFO action=utilization value=[0.91877070818894846, 1.2050117482925418, 0.79787618474042143, 1.1411536858357183, 0.93718767294236993]
+2017-04-17 08:58:19,792 MainThread final.py INFO action=results node_count=5 counter=[12099740, 15869388, 10507621, 15028410, 12342282] rmse=246700.84294077338 rsquarred=-18.67062443271805
+2017-04-17 08:58:19,792 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:58:19,792 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:58:19,792 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:58:20,108 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:58:24,681 MainThread timer.py INFO action=timer value=4.572830438613892
+2017-04-17 08:58:24,681 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:58:25,018 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:58:25,733 MainThread timer.py INFO action=timer value=0.7147872447967529
+2017-04-17 08:58:25,733 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:58:25,807 MainThread timer.py INFO action=timer value=0.05274534225463867
+2017-04-17 08:58:25,807 MainThread utils.py INFO action=utilization value=[0.96035926437900598, 0.96167047706531217, 1.0813618406218704, 0.95981284982661663, 0.95865244026719276, 0.96753175267661506, 0.96038887828609776, 0.9630857180919149, 1.2257616814600283, 0.96137509732534643]
+2017-04-17 08:58:25,807 MainThread final.py INFO action=results node_count=10 counter=[6323720, 6332354, 7120491, 6320122, 6312481, 6370949, 6323915, 6341673, 8071327, 6330409] rmse=3885022.437090881 rsquarred=-4877.248754891543
+2017-04-17 08:58:25,807 MainThread final.py INFO action=main status=end

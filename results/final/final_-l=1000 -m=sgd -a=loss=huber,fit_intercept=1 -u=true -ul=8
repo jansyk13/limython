@@ -1,0 +1,49 @@
+2017-04-17 08:42:57,773 MainThread final.py INFO action=main status=start
+2017-04-17 08:42:57,776 MainThread final.py INFO action=args values="Namespace(arguments='loss=huber,fit_intercept=1', features='*', limit='1000', model='sgd', processor='best-counter', url='true', url_limit=8)"
+2017-04-17 08:42:57,839 MainThread url.py INFO action=url_parse status=start
+2017-04-17 08:42:57,872 MainThread url.py INFO action=url_parse values_size=627
+2017-04-17 08:42:57,873 MainThread url.py INFO action=url_parse count=0
+2017-04-17 08:42:58,319 MainThread url.py INFO action=url_parse count=100
+2017-04-17 08:42:58,835 MainThread url.py INFO action=url_parse count=200
+2017-04-17 08:42:59,409 MainThread url.py INFO action=url_parse count=300
+2017-04-17 08:43:00,100 MainThread url.py INFO action=url_parse count=400
+2017-04-17 08:43:01,102 MainThread url.py INFO action=url_parse count=500
+2017-04-17 08:43:02,484 MainThread url.py INFO action=url_parse count=600
+2017-04-17 08:43:02,796 MainThread url.py INFO action=url_parse status=end
+2017-04-17 08:43:02,797 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:43:02,798 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:43:02,798 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:43:02,813 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:43:02,857 MainThread timer.py INFO action=timer value=0.04414176940917969
+2017-04-17 08:43:02,857 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:43:02,863 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:43:02,872 MainThread timer.py INFO action=timer value=0.009310007095336914
+2017-04-17 08:43:02,873 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:43:02,878 MainThread timer.py INFO action=timer value=0.0052258968353271484
+2017-04-17 08:43:02,879 MainThread utils.py INFO action=utilization value=[0.80343336842282231, 0.77208556541846807, 1.4244810661587095]
+2017-04-17 08:43:02,879 MainThread final.py INFO action=results node_count=3 counter=[1322157, 1270570, 2344174] rmse=839839.9198606136 rsquarred=-388.225467117551
+2017-04-17 08:43:02,879 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:43:02,879 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:43:02,879 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:43:02,885 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:43:02,925 MainThread timer.py INFO action=timer value=0.04031181335449219
+2017-04-17 08:43:02,926 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:43:02,932 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:43:02,942 MainThread timer.py INFO action=timer value=0.01002049446105957
+2017-04-17 08:43:02,942 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:43:02,948 MainThread timer.py INFO action=timer value=0.005159854888916016
+2017-04-17 08:43:02,948 MainThread utils.py INFO action=utilization value=[1.9072015015087402, 0.73880254029805348, 0.74895364521184449, 0.73067092088741503, 0.87437139209394732]
+2017-04-17 08:43:02,948 MainThread final.py INFO action=results node_count=5 counter=[1883133, 729479, 739502, 721450, 863337] rmse=702956.667997298 rsquarred=-271.6875627403055
+2017-04-17 08:43:02,948 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-17 08:43:02,948 MainThread selector.py INFO action=selecting-model value=sgd
+2017-04-17 08:43:02,948 MainThread sgd.py INFO action=init kwargs=loss=huber,fit_intercept=1
+2017-04-17 08:43:02,954 MainThread sgd.py INFO action=learning status=start
+2017-04-17 08:43:02,994 MainThread timer.py INFO action=timer value=0.03982830047607422
+2017-04-17 08:43:02,994 MainThread sgd.py INFO action=learning status=end
+2017-04-17 08:43:03,000 MainThread sgd.py INFO action=predict status=start
+2017-04-17 08:43:03,010 MainThread timer.py INFO action=timer value=0.009984493255615234
+2017-04-17 08:43:03,010 MainThread sgd.py INFO action=predict status=end
+2017-04-17 08:43:03,016 MainThread timer.py INFO action=timer value=0.005402326583862305
+2017-04-17 08:43:03,017 MainThread utils.py INFO action=utilization value=[3.0982148517865769, 0.69142970458593367, 1.066051354888421, 0.66303537381041266, 0.66389421217885469, 0.84258120630735756, 0.66134402938199499, 0.65963445489386974, 0.6708560694249287, 0.98295874274165118]
+2017-04-17 08:43:03,017 MainThread final.py INFO action=results node_count=10 counter=[1529558, 341352, 526299, 327334, 327758, 415974, 326499, 325655, 331195, 485277] rmse=3860188.9517040746 rsquarred=-8221.906410636442
+2017-04-17 08:43:03,017 MainThread final.py INFO action=main status=end
