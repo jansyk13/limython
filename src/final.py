@@ -50,7 +50,6 @@ def main_wrapper():
     conn = MySQLdb.connect(host="localhost", user="root",
                            passwd="password", db="mlrl")
     _to_omit = to_omit(args.url)
-
     dataframe, headers = categorical.tranform(
         pdsql.read_sql_query(
             "SELECT %s FROM data LIMIT %s" % (args.features, args.limit),
