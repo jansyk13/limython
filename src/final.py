@@ -57,7 +57,7 @@ def main_wrapper():
         ),
         _to_omit,
         args.url,
-        None
+        args.url_limit
     )
     processor = ps.select_processor(ah.ArgsHelper(3, args.processor))
     model = ls.select_model(args)
