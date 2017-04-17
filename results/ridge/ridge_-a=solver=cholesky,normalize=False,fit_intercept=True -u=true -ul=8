@@ -1,0 +1,141 @@
+2017-04-16 19:19:31,129 MainThread limython.py INFO action=main status=start
+2017-04-16 19:19:31,148 MainThread limython.py INFO action=args values="Namespace(arguments='solver=cholesky,normalize=False,fit_intercept=True', features='*', k_folds=10, limit='10000', model='ridge', node_count='3', processor='best-counter', run='false', url='true', url_limit=8)"
+2017-04-16 19:19:42,396 MainThread url.py INFO action=url_parse status=start
+2017-04-16 19:19:47,929 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-16 19:19:47,938 MainThread url.py INFO action=url_parse count=0
+2017-04-16 19:21:23,310 MainThread url.py INFO action=url_parse count=100
+2017-04-16 19:23:27,478 MainThread url.py INFO action=url_parse count=200
+2017-04-16 19:25:44,974 MainThread url.py INFO action=url_parse count=300
+2017-04-16 19:28:18,898 MainThread url.py INFO action=url_parse count=400
+2017-04-16 19:30:59,510 MainThread url.py INFO action=url_parse count=500
+2017-04-16 19:34:23,126 MainThread url.py INFO action=url_parse count=600
+2017-04-16 19:38:27,726 MainThread url.py INFO action=url_parse count=700
+2017-04-16 19:42:45,270 MainThread url.py INFO action=url_parse count=800
+2017-04-16 19:47:21,674 MainThread url.py INFO action=url_parse count=900
+2017-04-16 19:52:07,238 MainThread url.py INFO action=url_parse count=1000
+2017-04-16 19:57:06,746 MainThread url.py INFO action=url_parse count=1100
+2017-04-16 20:02:44,470 MainThread url.py INFO action=url_parse count=1200
+2017-04-16 20:08:40,266 MainThread url.py INFO action=url_parse count=1300
+2017-04-16 20:15:07,101 MainThread url.py INFO action=url_parse count=1400
+2017-04-16 20:21:22,054 MainThread url.py INFO action=url_parse count=1500
+2017-04-16 20:28:15,370 MainThread url.py INFO action=url_parse count=1600
+2017-04-16 20:35:39,202 MainThread url.py INFO action=url_parse count=1700
+2017-04-16 20:43:23,762 MainThread url.py INFO action=url_parse count=1800
+2017-04-16 20:51:20,074 MainThread url.py INFO action=url_parse count=1900
+2017-04-16 20:59:43,188 MainThread url.py INFO action=url_parse count=2000
+2017-04-16 21:08:21,431 MainThread url.py INFO action=url_parse count=2100
+2017-04-16 21:16:56,240 MainThread url.py INFO action=url_parse count=2200
+2017-04-16 21:25:41,110 MainThread url.py INFO action=url_parse count=2300
+2017-04-16 21:35:01,474 MainThread url.py INFO action=url_parse count=2400
+2017-04-16 21:44:53,375 MainThread url.py INFO action=url_parse count=2500
+2017-04-16 21:54:59,762 MainThread url.py INFO action=url_parse count=2600
+2017-04-16 22:01:56,570 MainThread url.py INFO action=url_parse count=2700
+2017-04-16 22:07:20,574 MainThread url.py INFO action=url_parse count=2800
+2017-04-16 22:13:17,907 MainThread url.py INFO action=url_parse count=2900
+2017-04-16 22:14:01,443 MainThread url.py INFO action=url_parse status=end
+2017-04-16 22:14:01,527 MainThread selector.py INFO action=selecting-model value=ridge
+2017-04-16 22:14:01,528 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-16 22:14:01,528 MainThread kfold.py INFO action=init
+2017-04-16 22:14:01,528 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-16 22:14:06,158 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:14:07,539 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:21:09,295 MainThread timer.py INFO action=timer value=421.7446804046631
+2017-04-16 22:21:09,296 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:21:09,680 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:21:09,913 MainThread timer.py INFO action=timer value=0.2320232391357422
+2017-04-16 22:21:09,926 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:21:09,939 MainThread timer.py INFO action=timer value=0.01169133186340332
+2017-04-16 22:21:09,954 MainThread utils.py INFO action=utilization value=[0.87137471408573819, 1.2339723615471048, 0.89465292436715715]
+2017-04-16 22:21:09,955 MainThread kfold.py INFO action=kfold index=1 counter=[1629873, 2308098, 1673414] rmse=26639.881796671183 rsquarred=0.49193542801405465
+2017-04-16 22:21:11,581 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:21:12,713 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:26:39,115 MainThread timer.py INFO action=timer value=326.3927915096283
+2017-04-16 22:26:39,115 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:26:39,359 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:26:39,564 MainThread timer.py INFO action=timer value=0.18950557708740234
+2017-04-16 22:26:39,578 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:26:39,590 MainThread timer.py INFO action=timer value=0.010332584381103516
+2017-04-16 22:26:39,590 MainThread utils.py INFO action=utilization value=[0.74874987134181903, 0.80226181082101078, 1.4489883178371701]
+2017-04-16 22:26:39,590 MainThread kfold.py INFO action=kfold index=2 counter=[1745905, 1870682, 3378693] rmse=58397.51502962333 rsquarred=0.47538936081059957
+2017-04-16 22:26:40,851 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:26:41,670 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:31:25,802 MainThread timer.py INFO action=timer value=284.1158413887024
+2017-04-16 22:31:25,803 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:31:25,913 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:31:26,018 MainThread timer.py INFO action=timer value=0.10451674461364746
+2017-04-16 22:31:26,019 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:31:26,030 MainThread timer.py INFO action=timer value=0.010329723358154297
+2017-04-16 22:31:26,031 MainThread utils.py INFO action=utilization value=[1.1774261692373482, 0.96415385929857633, 0.85841997146407534]
+2017-04-16 22:31:26,031 MainThread kfold.py INFO action=kfold index=3 counter=[1832822, 1500835, 1336246] rmse=12552.77338121217 rsquarred=0.5868779546460583
+2017-04-16 22:31:26,654 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:31:27,109 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:35:00,413 MainThread timer.py INFO action=timer value=213.30366945266724
+2017-04-16 22:35:00,413 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:35:00,550 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:35:00,663 MainThread timer.py INFO action=timer value=0.11192893981933594
+2017-04-16 22:35:00,663 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:35:00,675 MainThread timer.py INFO action=timer value=0.010458946228027344
+2017-04-16 22:35:00,675 MainThread utils.py INFO action=utilization value=[0.92373900360410521, 0.76060832925243882, 1.3156526671434561]
+2017-04-16 22:35:00,676 MainThread kfold.py INFO action=kfold index=4 counter=[1747979, 1439289, 2489592] rmse=21449.570280114564 rsquarred=0.5744568131206689
+2017-04-16 22:35:01,524 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:35:02,039 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:38:13,692 MainThread timer.py INFO action=timer value=191.6518259048462
+2017-04-16 22:38:13,692 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:38:13,853 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:38:13,972 MainThread timer.py INFO action=timer value=0.11884760856628418
+2017-04-16 22:38:13,972 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:38:13,984 MainThread timer.py INFO action=timer value=0.010704278945922852
+2017-04-16 22:38:13,985 MainThread utils.py INFO action=utilization value=[0.58729650856831206, 1.4370365409087864, 0.97566695052290142]
+2017-04-16 22:38:13,985 MainThread kfold.py INFO action=kfold index=5 counter=[1023002, 2503150, 1699498] rmse=33846.35766055056 rsquarred=0.40082546409258313
+2017-04-16 22:38:14,718 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:38:15,304 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:41:17,499 MainThread timer.py INFO action=timer value=182.19393706321716
+2017-04-16 22:41:17,499 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:41:17,650 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:41:17,782 MainThread timer.py INFO action=timer value=0.13177251815795898
+2017-04-16 22:41:17,783 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:41:17,797 MainThread timer.py INFO action=timer value=0.012852907180786133
+2017-04-16 22:41:17,797 MainThread utils.py INFO action=utilization value=[0.74531032197674074, 0.98983359721174391, 1.2648560808115155]
+2017-04-16 22:41:17,798 MainThread kfold.py INFO action=kfold index=6 counter=[1028726, 1366233, 1745837] rmse=27423.906069972734 rsquarred=-2.3468277127821127
+2017-04-16 22:41:18,650 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:41:19,146 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:44:23,549 MainThread timer.py INFO action=timer value=184.40232014656067
+2017-04-16 22:44:23,549 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:44:23,680 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:44:23,776 MainThread timer.py INFO action=timer value=0.09515738487243652
+2017-04-16 22:44:23,776 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:44:23,787 MainThread timer.py INFO action=timer value=0.010417699813842773
+2017-04-16 22:44:23,802 MainThread utils.py INFO action=utilization value=[1.4285654795795213, 0.79478300077613839, 0.77665151964434065]
+2017-04-16 22:44:23,803 MainThread kfold.py INFO action=kfold index=7 counter=[3316160, 1844947, 1802858] rmse=39109.89739896072 rsquarred=0.4511021380499026
+2017-04-16 22:44:24,283 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:44:24,679 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:47:20,229 MainThread timer.py INFO action=timer value=175.54981780052185
+2017-04-16 22:47:20,230 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:47:20,348 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:47:20,467 MainThread timer.py INFO action=timer value=0.11893892288208008
+2017-04-16 22:47:20,468 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:47:20,479 MainThread timer.py INFO action=timer value=0.009991884231567383
+2017-04-16 22:47:20,494 MainThread utils.py INFO action=utilization value=[1.3493509153364638, 1.0011958315015042, 0.64945325316203195]
+2017-04-16 22:47:20,495 MainThread kfold.py INFO action=kfold index=8 counter=[4045238, 3001499, 1947005] rmse=58627.865261477935 rsquarred=0.47434207219661384
+2017-04-16 22:47:21,052 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:47:21,575 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:52:13,383 MainThread timer.py INFO action=timer value=291.80748081207275
+2017-04-16 22:52:13,383 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:52:13,568 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:52:13,799 MainThread timer.py INFO action=timer value=0.21661043167114258
+2017-04-16 22:52:13,799 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:52:13,816 MainThread timer.py INFO action=timer value=0.015408992767333984
+2017-04-16 22:52:13,816 MainThread utils.py INFO action=utilization value=[1.0762540272631298, 0.91186973693178297, 1.0118762358050875]
+2017-04-16 22:52:13,816 MainThread kfold.py INFO action=kfold index=9 counter=[4532091, 3839871, 4260997] rmse=62823.37405489913 rsquarred=0.5214409379710827
+2017-04-16 22:52:14,592 MainThread ridge.py INFO action=init kwargs=solver=cholesky,normalize=False,fit_intercept=True
+2017-04-16 22:52:15,225 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:56:28,152 MainThread timer.py INFO action=timer value=252.92556715011597
+2017-04-16 22:56:28,152 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:56:28,294 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:56:28,386 MainThread timer.py INFO action=timer value=0.09127640724182129
+2017-04-16 22:56:28,386 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:56:28,397 MainThread timer.py INFO action=timer value=0.010249853134155273
+2017-04-16 22:56:28,398 MainThread utils.py INFO action=utilization value=[0.62967902333873016, 0.78812194127449586, 1.5821990353867741]
+2017-04-16 22:56:28,398 MainThread kfold.py INFO action=kfold index=10 counter=[1036221, 1296960, 2603720] rmse=48909.64321034522 rsquarred=-0.3200707556707809
+2017-04-16 22:56:28,429 MainThread kfold.py INFO action=validate status=end
+2017-04-16 22:56:28,429 MainThread limython.py INFO action=main status=end

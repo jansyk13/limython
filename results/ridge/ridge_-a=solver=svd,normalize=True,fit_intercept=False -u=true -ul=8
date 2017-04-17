@@ -1,0 +1,52 @@
+2017-04-16 19:19:31,620 MainThread limython.py INFO action=main status=start
+2017-04-16 19:19:31,647 MainThread limython.py INFO action=args values="Namespace(arguments='solver=svd,normalize=True,fit_intercept=False', features='*', k_folds=10, limit='10000', model='ridge', node_count='3', processor='best-counter', run='false', url='true', url_limit=8)"
+2017-04-16 19:19:40,887 MainThread url.py INFO action=url_parse status=start
+2017-04-16 19:19:46,133 MainThread url.py INFO action=url_parse values_size=2914
+2017-04-16 19:19:46,133 MainThread url.py INFO action=url_parse count=0
+2017-04-16 19:21:34,226 MainThread url.py INFO action=url_parse count=100
+2017-04-16 19:23:46,682 MainThread url.py INFO action=url_parse count=200
+2017-04-16 19:26:13,658 MainThread url.py INFO action=url_parse count=300
+2017-04-16 19:29:02,238 MainThread url.py INFO action=url_parse count=400
+2017-04-16 19:32:03,430 MainThread url.py INFO action=url_parse count=500
+2017-04-16 19:35:44,565 MainThread url.py INFO action=url_parse count=600
+2017-04-16 19:39:49,340 MainThread url.py INFO action=url_parse count=700
+2017-04-16 19:44:16,802 MainThread url.py INFO action=url_parse count=800
+2017-04-16 19:49:04,122 MainThread url.py INFO action=url_parse count=900
+2017-04-16 19:54:04,446 MainThread url.py INFO action=url_parse count=1000
+2017-04-16 19:59:16,808 MainThread url.py INFO action=url_parse count=1100
+2017-04-16 20:04:52,510 MainThread url.py INFO action=url_parse count=1200
+2017-04-16 20:10:34,990 MainThread url.py INFO action=url_parse count=1300
+2017-04-16 20:16:33,154 MainThread url.py INFO action=url_parse count=1400
+2017-04-16 20:22:53,175 MainThread url.py INFO action=url_parse count=1500
+2017-04-16 20:29:54,676 MainThread url.py INFO action=url_parse count=1600
+2017-04-16 20:37:20,974 MainThread url.py INFO action=url_parse count=1700
+2017-04-16 20:44:58,966 MainThread url.py INFO action=url_parse count=1800
+2017-04-16 20:52:55,162 MainThread url.py INFO action=url_parse count=1900
+2017-04-16 21:01:00,303 MainThread url.py INFO action=url_parse count=2000
+2017-04-16 21:09:14,701 MainThread url.py INFO action=url_parse count=2100
+2017-04-16 21:18:05,002 MainThread url.py INFO action=url_parse count=2200
+2017-04-16 21:27:24,934 MainThread url.py INFO action=url_parse count=2300
+2017-04-16 21:37:03,410 MainThread url.py INFO action=url_parse count=2400
+2017-04-16 21:46:49,903 MainThread url.py INFO action=url_parse count=2500
+2017-04-16 21:56:34,727 MainThread url.py INFO action=url_parse count=2600
+2017-04-16 22:03:02,382 MainThread url.py INFO action=url_parse count=2700
+2017-04-16 22:08:57,266 MainThread url.py INFO action=url_parse count=2800
+2017-04-16 22:14:50,114 MainThread url.py INFO action=url_parse count=2900
+2017-04-16 22:15:38,685 MainThread url.py INFO action=url_parse status=end
+2017-04-16 22:15:38,738 MainThread selector.py INFO action=selecting-model value=ridge
+2017-04-16 22:15:38,746 MainThread selector.py INFO action=selecting-processor value=best-counter
+2017-04-16 22:15:38,747 MainThread kfold.py INFO action=init
+2017-04-16 22:15:38,747 MainThread kfold.py INFO action=validate status=start kfolds=10
+2017-04-16 22:15:45,393 MainThread ridge.py INFO action=init kwargs=solver=svd,normalize=True,fit_intercept=False
+2017-04-16 22:15:47,139 MainThread ridge.py INFO action=learning status=start
+2017-04-16 22:57:43,534 MainThread timer.py INFO action=timer value=2516.387407541275
+2017-04-16 22:57:43,534 MainThread ridge.py INFO action=learning status=end
+2017-04-16 22:57:43,608 MainThread ridge.py INFO action=predict status=start
+2017-04-16 22:57:43,681 MainThread timer.py INFO action=timer value=0.07318687438964844
+2017-04-16 22:57:43,681 MainThread ridge.py INFO action=predict status=end
+2017-04-16 22:57:43,687 MainThread timer.py INFO action=timer value=0.0050029754638671875
+2017-04-16 22:57:43,687 MainThread utils.py INFO action=utilization value=[3.0, 0.0, 0.0]
+2017-04-16 22:57:43,687 MainThread kfold.py INFO action=kfold index=1 counter=[5611385, 0, 0] rmse=nan rsquarred=nan
+2017-04-16 22:57:44,066 MainThread ridge.py INFO action=init kwargs=solver=svd,normalize=True,fit_intercept=False
+2017-04-16 22:57:44,364 MainThread ridge.py INFO action=learning status=start
+2017-04-16 23:16:49,385 MainThread limython.py INFO action=end-with-exception

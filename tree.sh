@@ -35,7 +35,7 @@ declare -a arr=("-a=criterion=mae,splitter=best,max_depth=10,max_features=auto"
                 "-a=criterion=mae,splitter=best,max_depth=10,max_features=log2 -u=true -ul=8  -f=method,url,payload_size"
                 "-a=criterion=mse,splitter=best,max_depth=10,max_features=log2 -u=true -ul=8  -f=method,url,payload_size"
                 "-a=criterion=mae,splitter=random,max_depth=10,max_features=log2 -u=true -ul=8  -f=method,url,payload_size"
-                "-a=criterion=mse,splitter=random,max_depth=10,max_features=log2 -u=true -ul=8  -f=method,url,payload_size=true"
+                "-a=criterion=mse,splitter=random,max_depth=10,max_features=log2 -u=true -ul=8  -f=method,url,payload_size"
                 )
 
 mkdir -p "results"
