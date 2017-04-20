@@ -14,7 +14,7 @@ log.basicConfig(stream=sys.stdout, level=log.INFO,
 
 
 def process_args():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Python wrapper to simulate load balancing system and to create baselines.')
     parser.add_argument("-p", "--processor", required=True,
                         help="Request processor(simple-round-robin,best-counter)")
     parser.add_argument("-n", "--node-count", required=True,
