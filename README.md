@@ -1,12 +1,12 @@
 # Limython [![Build Status](https://travis-ci.org/jansyk13/limython.svg?branch=master)](https://travis-ci.org/jansyk13/limython)
 
-Python wrapper for machine learning for diploma thesis.
+Python and BASH wrappers for machine learning for diploma thesis. Topic is 'An Analysis of Potential Applications of Machine Learning in HTTP Load-balancing'.
 ## Guide
-Can be run as python script with several mandatory parameters(`limython.py`).
-`python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`
-To get baselines of data use `baseline.py` script
-`python src/baseline.py -n=3 -p=best-counter -k=10 -r=true -l=1000`
-To run final test use `final.py` script
+Can be run as python script with several mandatory parameters(`limython.py`):<br />
+`python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`<br />
+To get baselines of data use `baseline.py` script:<br />
+`python src/baseline.py -n=3 -p=best-counter -k=10 -r=true -l=1000`<br />
+To run final test use `final.py` script:<br />
 `python src/final.py -p=best-counter -l=50000 -m=sgd -a=loss=huber,fit_intercept=1 -u=true -ul=8`
 
 ## Parsing log files to csv format
