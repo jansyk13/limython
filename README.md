@@ -1,8 +1,8 @@
 # Limython [![Build Status](https://travis-ci.org/jansyk13/limython.svg?branch=master)](https://travis-ci.org/jansyk13/limython)
-Repository containing source code for my diploma thesis at University of Economics, Prague. The topic is 'An Analysis of Potential Applications of Machine Learning in HTTP Load-balancing'. Repository contains Python and BASH wrappers for machine learning and simulating load balancing system. Full text of the thesis can be found in repository as well.
+The repository containing the source code for my diploma thesis at University of Economics, Prague. The topic is 'An Analysis of Potential Applications of Machine Learning in HTTP Load-balancing'. the repository contains Python and BASH wrappers for machine learning and simulating load balancing system. the full text of the thesis can be found in the repository as well.
 
 ## Guide
-Can be run as python script with several mandatory parameters(`limython.py`):<br />
+Can be run as python script with several mandatory parameters (`limython.py`):<br />
 `python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`<br />
 To get baselines of data use `baseline.py` script:<br />
 `python src/baseline.py -n=3 -p=best-counter -k=10 -r=true -l=1000`<br />
@@ -13,13 +13,13 @@ To run final test use `final.py` script:<br />
 Run `result_to_csv.py` script with parameters `stdev|timer|rmse|rsquared|counter` and path `/results/` and then forward standard output to file.
 
 ## Database
-Database should be running on localhost with port 3306. Current setup uses `root` as user and `password` as password, but it is easy to change by editing scripts.
+Database should be running on `localhost` with port `3306`. Current setup uses `root` as user and `password` as password, but it is easy to change by editing scripts.
 Database schema should be named `mlrl` and table named `data`.
 
 ## Setup
 * Install Fortran, C and C++ compilers (`yum install gcc-gfortran gcc gcc-c++`)
 * Install MySQL server, command line client and other related libraries (`yum isntall mysql mysql-server mysql-devel mysql-lib`)
-* Install BLAS prerequistes (`yum install automake autoconf libtool*`)
+* Install BLAS prerequisites (`yum install automake autoconf libtool*`)
 * Install BLAS (`yum install lapack-devel blas-devel atlas-sse3-devel`)
 * Install Python 3.5 and virtualenv (`yum install python35 python35-virtualenv python35-pip`)
 * Create and source new environment (`virtualenv-3.5 ml; source ml/bin/activate`)
@@ -29,12 +29,15 @@ Database schema should be named `mlrl` and table named `data`.
 Note: Installation via Pip may cause compilation of several libraries into C and C++ and it can make it very slow(verbose mode recommended). Other issue is that Pip may not respect dependencies between libraries in requirements.txt(install separately).
 
 ## Data
-* using test data from http://ita.ee.lbl.gov/html/contrib/EPA-HTTP.html
+* Using test data from http://ita.ee.lbl.gov/html/contrib/EPA-HTTP.html
 
 ## BLAS
 * See configuration with NumPy `python -c "import numpy; numpy.show_config()"`
 * See configuration with SciPy `python -c "import scipy; scipy.show_config()"`
-* Make sure BLAS is setup correctly `export MKL_NUM_THREADS=32` `export OPENBLAS_NUM_THREADS=32` `export NUMEXPR_NUM_THREADS=32`
+* Make sure BLAS is set up correctly by setting to environment variables:
+  * `export MKL_NUM_THREADS=32` 
+  * `export OPENBLAS_NUM_THREADS=32` 
+  * `export NUMEXPR_NUM_THREADS=32`
 
 ### Help limython.py
 ```
