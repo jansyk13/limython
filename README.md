@@ -1,6 +1,11 @@
 # Limython [![Build Status](https://travis-ci.org/jansyk13/limython.svg?branch=master)](https://travis-ci.org/jansyk13/limython)
 The repository containing the source code for my diploma thesis at University of Economics, Prague. The topic is 'An Analysis of Potential Applications of Machine Learning in HTTP Load-balancing'. the repository contains Python and BASH wrappers for machine learning and simulating load balancing system. the full text of the thesis can be found in the repository as well.
 
+## Thesis
+* Thesis was successfully defended in summer 2017.
+* Supervisor: Ing. Rudfolf Pecinovsky, CSc.
+* Oponent: Mgr. Zbynek Slajchrt, Ph.D.
+
 ## Guide
 Can be run as python script with several mandatory parameters (`limython.py`):<br />
 `python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`<br />
