@@ -6,6 +6,15 @@ The repository containing the source code for my diploma thesis at University of
 * Supervisor: Ing. Rudfolf Pecinovsky, CSc.
 * Oponent: Mgr. Zbynek Slajchrt, Ph.D.
 
+### Title
+An Analysis of Potential Applica-tions of Machine Learning in HTTP Load Balancing
+
+### Abstract
+Both machine learning and HTTP load balancing are well known and widely researched concepts and methods. My diploma thesis addresses possible applications of machine learning to HTTP load balancing. The main objective is to find a method to achieve better utilization of load balancing. This objective can reduce monetary costs and provide better stability of a load balanced system. In the first part, machine learning workflow and methods are described in order to analyze whether such methods could be applied to load balancing systems. After that, the current state of HTTP load balancing methods and strategies is outlined. Finally, a load balancing method using machine learning is designed and tested. The method is based on the least loaded approach using predicted values to balance HTTP traffic, the machine learning models were selected by using a grid search to find the most accurate models. These meth-ods were tested and performed well in comparison to other methods. The tests were conducted with over a hundred machine learning models, not all models were accurate or had short enough learning times. Lacking those factors deemed them unsuitable for later tests. The models were compared based on measured utilization and performance metrics for regression based machine learning models. The designed method could be applied to real world systems, however, it would require defining a domain specific metric. The applications should also employ a grid search in order to find the most accurate machine learning model.
+
+### Keywords
+HTTP protocol, load balancing, machine learning
+
 ## Guide
 Can be run as python script with several mandatory parameters (`limython.py`):<br />
 `python src/limython.py -p=best-counter -l=100 -n=3 -k=2 -r=false`<br />
